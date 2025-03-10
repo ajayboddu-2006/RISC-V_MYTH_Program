@@ -80,27 +80,22 @@ This repository contains various **TL-Verilog** projects implemented using **Mak
 
 ---
 
-| **Category**            | **Project Name**       | **Source Code** | **Makerchip Simulation** |
-|------------------------|----------------------|-----------------|-------------------------|
-| **🔢 Combinational Circuits** | Logic Gates | [Logic Gates](path/to/logic_gates) | [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr) |
-| | 2:1 MUX | [MUX_2X1](path/to/mux_2x1) | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Mjhqxm) |
-| | 4:1 MUX | [MUX_4X1](path/to/mux_4x1) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/08qh6wO) |
-| | Ripple Carry Adder (RCA) | [RCA](path/to/rca) | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Nxh0Vm) |
-| | Pythagoras (Combinational) | [Pythagoras](path/to/pythagoras_comb) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/076hAWz) |
-
-| **🔄 Sequential Circuits** | Sequential Calculator | [Sequential Calculator](path/to/sequential_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0k5hOq4) |
-| | Counter | [Counter](path/to/counter) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0g5hAYw) |
-| | Fibonacci | [Fibonacci](path/to/fibonacci) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/00ghGrm) |
-
-| **🚀 Pipelining Circuits** | Pipelined Sequential Calculator | [Pipelined Calculator](path/to/pipelined_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0oYhrKJ) |
-| | 2-Cycle Pipelined Calculator | [2-Cycle Calculator](path/to/2cycle_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0qjh874) |
-| | Pipelined Error Block | [Error Block](path/to/error_block) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0nZh76n) |
-| | Pipelined Pythagoras | [Pipelined Pythagoras](path/to/pipelined_pythagoras) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0lOh2z6) |
-| | Pipelined Fibonacci | [Pipelined Fibonacci](path/to/pipelined_fibonacci) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0mwhjR8) |
-
-| **✅ Validity Circuits** | Sequential Validity Calculator | [Validity Calculator](path/to/validity_calculator) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0AnhN18) |
-| | Pythagoras Validity Calculator | [Pythagoras Validity](path/to/pythagoras_validity) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0vgh7yK) |
+| **Category**                | **Project Name**                     | **Source Code**                                | **Makerchip Simulation** |
+|-----------------------------|--------------------------------------|------------------------------------------------|-------------------------|
+| **Combinational Circuits**  | Logic Gates                         | [Logic Gates](path/to/logic_gates)             | [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr) |
+|                             | 2:1 MUX                             | [MUX_2X1](path/to/mux_2x1)                     | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Mjhqxm) |
+|                             | 4:1 MUX                             | [MUX_4X1](path/to/mux_4x1)                     | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/08qh6wO) |
+|                             | Ripple Carry Adder (RCA)            | [RCA](path/to/rca)                             | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Nxh0Vm) |
+|                             | Pythagoras (Combinational)          | [Pythagoras](path/to/pythagoras_comb)          | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/076hAWz) |
+| **Sequential Circuits**     | Sequential Calculator               | [Sequential Calculator](path/to/sequential_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0k5hOq4) |
+|                             | Counter                             | [Counter](path/to/counter)                     | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0g5hAYw) |
+|                             | Fibonacci                           | [Fibonacci](path/to/fibonacci)                 | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/00ghGrm) |
+| **Pipelining Circuits**     | Pipelined Sequential Calculator     | [Pipelined Calculator](path/to/pipelined_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0oYhrKJ) |
+|                             | 2-Cycle Pipelined Calculator        | [2-Cycle Calculator](path/to/2cycle_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0qjh874) |
+|                             | Pipelined Error Block               | [Error Block](path/to/error_block)             | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0nZh76n) |
+|                             | Pipelined Pythagoras                | [Pipelined Pythagoras](path/to/pipelined_pythagoras) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0lOh2z6) |
+|                             | Pipelined Fibonacci                 | [Pipelined Fibonacci](path/to/pipelined_fibonacci) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0mwhjR8) |
+| **Validity Circuits**       | Sequential Validity Calculator      | [Validity Calculator](path/to/validity_calculator) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0AnhN18) |
+|                             | Pythagoras Validity Calculator      | [Pythagoras Validity](path/to/pythagoras_validity) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0vgh7yK) |
 
 ---
-
-
