@@ -94,3 +94,46 @@ Whether you're learning TL-Verilog, exploring hardware design methodologies, or 
 |                             | Pythagoras Validity Calculator      | [Pythagoras Validity](path/to/pythagoras_validity) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0vgh7yK) |
 
 ---
+
+
+
+# ✅ TL-Verilog Projects Overview
+Below is a structured list of projects categorized into **Combinational, Sequential, Pipelining, and Validity Circuits**.  
+Click on the **project name** to view its source code, on **Makerchip** to simulate it online, and on **Screenshot** to view the Makerchip output.
+
+---
+
+## 📌 TL-Verilog Projects Table  
+
+| **Category**                | **Project Name**                     | **Source Code**                                | **Makerchip Link** | **Output Snapshot** |
+|-----------------------------|--------------------------------------|------------------------------------------------|-------------------------|---------------|
+| **Combinational Circuits**  | Logic Gates                         | [Logic Gates](path/to/logic_gates)             | [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr) | [Screenshot](path/to/screenshots/logic_gates.png) |
+|                             | 2:1 MUX                             | [MUX_2X1](path/to/mux_2x1)                     | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Mjhqxm) | [Screenshot](path/to/screenshots/mux_2x1.png) |
+|                             | 4:1 MUX                             | [MUX_4X1](path/to/mux_4x1)                     | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/08qh6wO) | [Screenshot](path/to/screenshots/mux_4x1.png) |
+|                             | Ripple Carry Adder (RCA)            | [RCA](path/to/rca)                             | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Nxh0Vm) | [Screenshot](path/to/screenshots/rca.png) |
+|                             | Pythagoras (Combinational)          | [Pythagoras](path/to/pythagoras_comb)          | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/076hAWz) | [Screenshot](path/to/screenshots/pythagoras_comb.png) |
+| **Sequential Circuits**     | Sequential Calculator               | [Sequential Calculator](path/to/sequential_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0k5hOq4) | [Screenshot](path/to/screenshots/sequential_calculator.png) |
+|                             | Counter                             | [Counter](path/to/counter)                     | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0g5hAYw) | [Screenshot](path/to/screenshots/counter.png) |
+|                             | Fibonacci                           | [Fibonacci](path/to/fibonacci)                 | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/00ghGrm) | [Screenshot](path/to/screenshots/fibonacci.png) |
+| **Pipelining Circuits**     | Pipelined Sequential Calculator     | [Pipelined Calculator](path/to/pipelined_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0oYhrKJ) | [Screenshot](path/to/screenshots/pipelined_calculator.png) |
+|                             | 2-Cycle Pipelined Calculator        | [2-Cycle Calculator](path/to/2cycle_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0qjh874) | [Screenshot](path/to/screenshots/2cycle_calculator.png) |
+|                             | Pipelined Error Block               | [Error Block](path/to/error_block)             | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0nZh76n) | [Screenshot](path/to/screenshots/error_block.png) |
+|                             | Pipelined Pythagoras                | [Pipelined Pythagoras](path/to/pipelined_pythagoras) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0lOh2z6) | [Screenshot](path/to/screenshots/pipelined_pythagoras.png) |
+|                             | Pipelined Fibonacci                 | [Pipelined Fibonacci](path/to/pipelined_fibonacci) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0mwhjR8) | [Screenshot](path/to/screenshots/pipelined_fibonacci.png) |
+| **Validity Circuits**       | Sequential Validity Calculator      | [Validity Calculator](path/to/validity_calculator) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0AnhN18) | [Screenshot](path/to/screenshots/validity_calculator.png) |
+|                             | Pythagoras Validity Calculator      | [Pythagoras Validity](path/to/pythagoras_validity) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0vgh7yK) | [Screenshot](path/to/screenshots/pythagoras_validity.png) |
+
+---
+
+> **Note:**  
+> 1️⃣ Replace `path/to/...` with the **actual paths** to your files in your GitHub repository.  
+> 2️⃣ Store your screenshots inside a folder (e.g., `screenshots/`) and use their correct paths in the table.  
+
+---
+
+### ✅ **Improvements in this Version:**
+✔ Added **screenshots column** with preview images for each project.  
+✔ Used `![Screenshot](path/to/image.png)` for embedding images in Markdown.  
+✔ Ensured the table remains **clean, structured, and readable**.  
+
+This will make your **GitHub repository well-organized and visually appealing**. 🚀 Let me know if you need any further changes! 😊
