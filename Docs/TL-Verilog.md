@@ -3,32 +3,32 @@ TL-Verilog is an emerging extension to SystemVerilog that supports transaction-l
 
 ---
 
-## **Features of TL-Verilog**
-### 1️⃣ Pipeline-Centric Design
+## Features of TL-Verilog
+### Pipeline-Centric Design
 - TL-Verilog introduces **implicit pipelines** using `|pipe`, making sequential logic more structured and readable.
 - Eliminates the need for **explicit clocking and always blocks**.
 
-### 2️⃣ Concise and Readable Syntax
+### Concise and Readable Syntax
 - Reduces **boilerplate code** compared to traditional Verilog/SystemVerilog.
 - Uses **hierarchical scoping (`|` notation)** for better organization.
 
-### 3️⃣ Automatic Signal Propagation
+### Automatic Signal Propagation
 - Variables automatically flow across pipeline stages (`@0, @1, etc.`).
 - No need for manually coding **registers or delays**.
 
-### 4️⃣ Modular and Reusable Design
+### Modular and Reusable Design
 - Encourages **reuse of pipeline structures**, reducing redundancy.
 - **Scoped signals** prevent naming conflicts and improve clarity.
 
-### 5️⃣ Enhanced Debugging and Simulation
+### Enhanced Debugging and Simulation
 - Provides built-in visualization tools like **Makerchip** for **interactive debugging**.
 - Debugging is **simpler and more intuitive** due to structured pipeline stages.
 
-### 6️⃣ Clock and Reset Abstraction
+### Clock and Reset Abstraction
 - No need to explicitly define **clocks and resets**; TL-Verilog handles them automatically.
 - Reduces **errors related to clock-domain crossings**.
 
-### 7️⃣ Integration with Existing Tools
+### Integration with Existing Tools
 - TL-Verilog can be **translated to standard Verilog**, making it **compatible with FPGA and ASIC toolchains**.
 - Works with **open-source tools** like **Yosys, Verilator, and Makerchip**.
 
@@ -40,23 +40,23 @@ These features make **TL-Verilog** a modern, efficient alternative for hardware 
 **Makerchip** is a **cloud-based integrated development environment (IDE)** designed specifically for TL-Verilog, enabling efficient **digital hardware design, simulation, and debugging**. It simplifies **RISC-V, FPGA, and ASIC** development by providing an **interactive and user-friendly** environment.
 
 ## **Key Features of Makerchip IDE**
-### 🔹 Web-Based and Accessible
+### Web-Based and Accessible
 - **No installation required**; accessible via any web browser.
 - Supports **real-time collaboration and sharing**.
 
-### 🔹 Support for TL-Verilog
+### Support for TL-Verilog
 - Built-in support for **TL-Verilog syntax** and hierarchical design.
 - Reduces complexity by **automatically handling pipelining and clocking**.
 
-### 🔹 Integrated Simulation and Debugging
+### Integrated Simulation and Debugging
 - Provides **real-time waveform visualization** for debugging.
 - Supports **interactive simulation** to verify designs efficiently.
 
-### 🔹 Seamless Verilog Integration
+### Seamless Verilog Integration
 - Converts **TL-Verilog to standard Verilog** for FPGA/ASIC synthesis.
 - Works with **open-source tools** like **Yosys, Verilator, and OpenROAD**.
 
-### 🔹 M4 Macro Preprocessor Support
+### M4 Macro Preprocessor Support
 - Enables **parameterized design** and **macro-based code generation**.
 - Helps in **modularizing large designs efficiently**.
 
@@ -66,17 +66,12 @@ These features make **TL-Verilog** a modern, efficient alternative for hardware 
 ✔ **Ideal for RISC-V and complex digital designs.**  
 
 
-# **Projects on TL-Verilog :**
+## Projects on TL-Verilog :
 
 This repository showcases various TL-Verilog projects implemented using Makerchip IDE. The projects are categorized into Combinational Circuits, Sequential Circuits, Pipelining, Validity covering a range of basic to advanced digital design concepts. Each project includes a direct link to Makerchip, allowing you to simulate and explore the code interactively.
 
 Whether you're learning TL-Verilog, exploring hardware design methodologies, or working on RISC-V and FPGA-based applications, this collection serves as a valuable reference.
 
-
-# **TL-Verilog Projects**
-
-This repository contains various **TL-Verilog** projects implemented using **Makerchip IDE**. The projects are categorized into **Validity, Pipelining, Sequential Circuits, and Combinational Circuits**.
- Each project includes a direct link to Makerchip, allowing you to simulate and explore the code interactively.
 
 ---
 
