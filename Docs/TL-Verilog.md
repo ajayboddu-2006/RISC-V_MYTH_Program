@@ -72,38 +72,7 @@ This repository showcases various TL-Verilog projects implemented using Makerchi
 
 Whether you're learning TL-Verilog, exploring hardware design methodologies, or working on RISC-V and FPGA-based applications, this collection serves as a valuable reference.
 
-
 ---
-
-| **Category**                | **Project Name**                     | **Source Code**                                | **Simulation Output** |
-|-----------------------------|--------------------------------------|------------------------------------------------|-------------------------|
-| **Combinational Circuits**  | Logic Gates                         | [Logic Gates](path/to/logic_gates)             | [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr) |
-|                             | 2:1 MUX                             | [MUX_2X1](path/to/mux_2x1)                     | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Mjhqxm) |
-|                             | 4:1 MUX                             | [MUX_4X1](path/to/mux_4x1)                     | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/08qh6wO) |
-|                             | Ripple Carry Adder (RCA)            | [RCA](path/to/rca)                             | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Nxh0Vm) |
-|                             | Pythagoras (Combinational)          | [Pythagoras](path/to/pythagoras_comb)          | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/076hAWz) |
-| **Sequential Circuits**     | Sequential Calculator               | [Sequential Calculator](path/to/sequential_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0k5hOq4) |
-|                             | Counter                             | [Counter](path/to/counter)                     | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0g5hAYw) |
-|                             | Fibonacci                           | [Fibonacci](path/to/fibonacci)                 | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/00ghGrm) |
-| **Pipelining Circuits**     | Pipelined Sequential Calculator     | [Pipelined Calculator](path/to/pipelined_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0oYhrKJ) |
-|                             | 2-Cycle Pipelined Calculator        | [2-Cycle Calculator](path/to/2cycle_calculator) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0qjh874) |
-|                             | Pipelined Error Block               | [Error Block](path/to/error_block)             | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0nZh76n) |
-|                             | Pipelined Pythagoras                | [Pipelined Pythagoras](path/to/pipelined_pythagoras) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0lOh2z6) |
-|                             | Pipelined Fibonacci                 | [Pipelined Fibonacci](path/to/pipelined_fibonacci) | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0mwhjR8) |
-| **Validity Circuits**       | Sequential Validity Calculator      | [Validity Calculator](path/to/validity_calculator) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0AnhN18) |
-|                             | Pythagoras Validity Calculator      | [Pythagoras Validity](path/to/pythagoras_validity) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0vgh7yK) |
-
----
-
-
-
-# ✅ TL-Verilog Projects Overview
-Below is a structured list of projects categorized into **Combinational, Sequential, Pipelining, and Validity Circuits**.  
-Click on the **project name** to view its source code, on **Makerchip** to simulate it online, and on **Screenshot** to view the Makerchip output.
-
----
-
-## 📌 TL-Verilog Projects Table  
 
 | **Category**                | **Project Name**                     | **Source Code**                                | **Makerchip Link** | **Output Snapshot** |
 |-----------------------------|--------------------------------------|------------------------------------------------|-------------------------|---------------|
@@ -125,15 +94,3 @@ Click on the **project name** to view its source code, on **Makerchip** to simul
 
 ---
 
-> **Note:**  
-> 1️⃣ Replace `path/to/...` with the **actual paths** to your files in your GitHub repository.  
-> 2️⃣ Store your screenshots inside a folder (e.g., `screenshots/`) and use their correct paths in the table.  
-
----
-
-### ✅ **Improvements in this Version:**
-✔ Added **screenshots column** with preview images for each project.  
-✔ Used `![Screenshot](path/to/image.png)` for embedding images in Markdown.  
-✔ Ensured the table remains **clean, structured, and readable**.  
-
-This will make your **GitHub repository well-organized and visually appealing**. 🚀 Let me know if you need any further changes! 😊
