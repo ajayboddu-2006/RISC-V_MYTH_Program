@@ -75,7 +75,7 @@ Whether you're learning TL-Verilog, exploring hardware design methodologies, or 
 
 ---
 
-| **Category**                | **Project Name**                     | **Source Code**                                | **Makerchip Simulation** |
+| **Category**                | **Project Name**                     | **Source Code**                                | **Simulation Output** |
 |-----------------------------|--------------------------------------|------------------------------------------------|-------------------------|
 | **Combinational Circuits**  | Logic Gates                         | [Logic Gates](path/to/logic_gates)             | [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr) |
 |                             | 2:1 MUX                             | [MUX_2X1](path/to/mux_2x1)                     | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Mjhqxm) |
