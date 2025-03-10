@@ -71,3 +71,44 @@ These features make **TL-Verilog** a modern, efficient alternative for hardware 
 This repository showcases various TL-Verilog projects implemented using Makerchip IDE. The projects are categorized into Combinational Circuits, Sequential Circuits, Pipelining, Validity covering a range of basic to advanced digital design concepts. Each project includes a direct link to Makerchip, allowing you to simulate and explore the code interactively.
 
 Whether you're learning TL-Verilog, exploring hardware design methodologies, or working on RISC-V and FPGA-based applications, this collection serves as a valuable reference.
+
+
+# **TL-Verilog Projects**
+
+This repository contains various **TL-Verilog** projects implemented using **Makerchip IDE**. The projects are categorized into **Validity, Pipelining, Sequential Circuits, and Combinational Circuits**.
+
+---
+
+
+## **Combinational Circuits**
+- [Combinational Calculator](path/to/Combinational_Calculator.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/098hkYY)  
+- [4x1 Multiplexer](path/to/Mux_4x1.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/08qh6wO)  
+- [Pythagoras Combinational](path/to/Pythagoras_Combinational.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/076hAWz)  
+- [Ripple Carry Adder (RCA)](path/to/RCA.tlv) - [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Nxh0Vm)  
+- [2x1 Multiplexer](path/to/Mux_2x1.tlv) - [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Mjhqxm)  
+- [Logic Gates](path/to/Logic_Gates.tlv) - [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr)  
+
+---
+
+## **Sequential Circuits**
+- [Sequential Calculator](path/to/Sequential_Calculator.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0k5hOq4)  
+- [Counter](path/to/Counter.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0g5hAYw)  
+- [Fibonacci](path/to/Fibonacci.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/00ghGrm)  
+
+---
+
+## **Pipelining**
+- [Pipelining Sequential 2-cycle Calculator](path/to/Pipelining_Sequential_2cycle_Calculator.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0qjh874)  
+- [Pipelining Sequential Calculator](path/to/Pipelining_Sequential_Calculator.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0oYhrKJ)  
+- [Pipelined Error Block](path/to/Pipelined_Error_Block.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0nZh76n)  
+- [Pipelined Pythagoras](path/to/Pipelined_Pythagoras.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0lOh2z6)  
+- [Fibonacci Sequential Pipelined](path/to/Fibonacci_Sequential_Pipelined.tlv) - [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/0mwhjR8)  
+
+---
+
+## **Validity**
+- [Validity Sequential Calculator](path/to/Validity_Sequential_Calculator.tlv) - [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0AnhN18)  
+- [Validity Distance Calculator using Pythagoras Theorem](path/to/Validity_Distance_Calculator.tlv) - [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0vgh7yK)  
+
+
+
