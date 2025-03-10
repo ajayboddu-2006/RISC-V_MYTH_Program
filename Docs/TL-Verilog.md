@@ -76,7 +76,7 @@ Whether you're learning TL-Verilog, exploring hardware design methodologies, or 
 
 | **Category**                | **Project Name**                     | **Source Code**                                | **Makerchip Link** | **Output Snapshot** |
 |-----------------------------|--------------------------------------|------------------------------------------------|-------------------------|---------------|
-| **Combinational Circuits**  | Logic Gates                         | [Logic Gates](../Combinational Circuits/Combinational_Calculator/Combinational_Calculator.tlv)             | [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr) | [Screenshot](path/to/screenshots/logic_gates.png) |
+| **Combinational Circuits**  | Logic Gates                         | [Logic Gates](./../Combinational Circuits/Combinational_Calculator/Combinational_Calculator.tlv)             | [Makerchip](https://makerchip.com/sandbox/0lYfohqE9/03lhpRr) | [Screenshot](path/to/screenshots/logic_gates.png) |
 |                             | 2:1 MUX                             | [MUX_2X1](path/to/mux_2x1)                     | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Mjhqxm) | [Screenshot](path/to/screenshots/mux_2x1.png) |
 |                             | 4:1 MUX                             | [MUX_4X1](path/to/mux_4x1)                     | [Makerchip](https://makerchip.com/sandbox/0rkfAhy2Z/08qh6wO) | [Screenshot](path/to/screenshots/mux_4x1.png) |
 |                             | Ripple Carry Adder (RCA)            | [RCA](path/to/rca)                             | [Makerchip](https://makerchip.com/sandbox/073fmhN5r/0Nxh0Vm) | [Screenshot](path/to/screenshots/rca.png) |
