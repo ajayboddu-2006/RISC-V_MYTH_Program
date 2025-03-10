@@ -1,5 +1,5 @@
 # **Transaction-Level Verilog (TL-Verilog)**
-TL-Verilog is an emerging extension to SystemVerilog that supports transaction-level design methodology. In transaction-level design, a **transaction** is an entity that moves through a microarchitecture. It is operated upon and steered through the machinery by flow components such as pipelines, arbiters, and queues. A transaction might be a **machine instruction, a flit of a packet, or a memory read/write**. The flow of a transaction can be established independently from the logic that operates on the transaction.  
+TL-Verilog is an emerging extension to SystemVerilog that supports transaction-level design methodology. In transaction-level design, a transaction is an entity that moves through a microarchitecture. It is operated upon and steered through the machinery by flow components such as pipelines, arbiters, and queues. A transaction might be a machine instruction, a flit of a packet, or a memory read/write. The flow of a transaction can be established independently from the logic that operates on the transaction.  
 
 ---
 
