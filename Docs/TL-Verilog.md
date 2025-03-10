@@ -76,6 +76,7 @@ Whether you're learning TL-Verilog, exploring hardware design methodologies, or 
 # **TL-Verilog Projects**
 
 This repository contains various **TL-Verilog** projects implemented using **Makerchip IDE**. The projects are categorized into **Validity, Pipelining, Sequential Circuits, and Combinational Circuits**.
+ Each project includes a direct link to Makerchip, allowing you to simulate and explore the code interactively.
 
 ---
 
