@@ -64,3 +64,10 @@ These features make **TL-Verilog** a modern, efficient alternative for hardware 
 ✔ **Reduces development time** with automated pipelines.  
 ✔ **Enhances readability** compared to traditional Verilog.  
 ✔ **Ideal for RISC-V and complex digital designs.**  
+
+
+# **Projects on TL-Verilog :**
+
+This repository showcases various TL-Verilog projects implemented using Makerchip IDE. The projects are categorized into Combinational Circuits, Sequential Circuits, Pipelining, Validity covering a range of basic to advanced digital design concepts. Each project includes a direct link to Makerchip, allowing you to simulate and explore the code interactively.
+
+Whether you're learning TL-Verilog, exploring hardware design methodologies, or working on RISC-V and FPGA-based applications, this collection serves as a valuable reference.
