@@ -291,18 +291,18 @@ int main() {
 
 Now open the terminal and compile the above C program using the gcc C compiler by using the below command
 
-```bash
+```sh
 gcc sum1ton.c
 ```
 
 Now type the below command to view the results
 
-```bash
+```sh
 ./a.out
 ```
 
 You can view the result as follows...
 
-```bash
+```sh
 Sum of numbers from 1 to 100 is 5050
 ```
