@@ -41,7 +41,7 @@ The ISA defines the supported data types, the registers, how the hardware manage
     </tr>
     <tr>
         <td style="border-top: 2px solid black; height: 50px; text-align: center;">
-            <b>Types of ISA</b>
+            <center><b>Types of ISA</b></center>
         </td>
     </tr>
 </table>
