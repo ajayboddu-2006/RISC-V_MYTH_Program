@@ -534,3 +534,307 @@ int main() {
 | ![Types_of_ISA](./../Images/signed_c_program_op.png) |
 | :--------------------------------------------------: |
 |           Output of C program for the range defined for RV64 Signed Numbers       |
+
+
+
+
+## **Application Binary Interface :**
+
+The Application Binary Interface (ABI) serves as a crucial bridge between application programs and the underlying system, defining how software interacts with hardware at the binary level. It specifies conventions for function calls, register usage, memory access, and system call mechanisms, ensuring seamless communication between user applications and the operating system. In the context of RISC-V, the ABI standardizes how registers are used, enabling application programs to access registers via system calls, without needing direct hardware control. This abstraction allows software to run efficiently on different RISC-V implementations while maintaining compatibility across systems. 
+Application Binary Interface also known as the System Call Interface.
+User can access the Hardware resources through ABI via Registers.
+
+# Image
+
+In RISC-V Specifications we have total of 32 Registers. The width of Registers is specified by the Keyword “XLEN”.
+
+| RISC-V Architecture | XLEN |
+|----------|----------|
+| RV64 | 64 |
+| RV32 | 32 |
+
+
+Here, we have to note one point, that RISC-V belongs to little-endian Memory addressign System 
+
+### Memory Addressing Systems :
+There are two types of Memory Addressing systems
+    • Big-endian memory addressing system
+    • Little-endian memory addressign system
+
+We refer the memory in terms of Bytes. These two memory addressing systems differ in Byte ordering.
+
+# Image
+
+
+### Memory addressing according RISC-V(RV64) specifications :
+
+# Image
+
+According to the specifications, the address of the above doubleword is m[0]
+Similarly, 
+          Address of second doubleword is m[8]
+	  Address of third doubleword is m[16]
+
+### **Why 32 registers in RISC-V Architecture :**
+
+The reason for this is that the registers used in RISC-V instructions are of 5-bit wide, And using 5-bits, we can represent 32-patterns. So, there are 32 registers in RISC-V.
+
+The significance of all 32 registers are as follows :
+
+# Image
+
+### **RISC-V Instructions :**
+
+#### 1. Load Instruction :
+
+The `ld (Load Double-Word)` instruction in RISC-V is used to load a 64-bit (double-word) value from memory into a register. It is part of the RV64I base instruction set and is primarily used in 64-bit RISC-V architectures. 
+
+# Image
+
+The way the Instruction is stored in the memory is as follows:
+
+# image
+
+- rd          → Destination register where the loaded value is stored. 
+- offset(rs1) → Memory address computed by adding the offset to the value in rs1. 
+- Opcode      → Defines the Instruction.In this case “ld”
+- funct3      → Additional bits that defines the Instructions
+- immediate   → Represent the immediate number.
+
+
+#### 2. add Instruction :
+The ADD instruction in RISC-V is used to perform integer addition between two registers. It follows the R-type instruction format.
+
+# Image
+
+The way the Instruction is stored in the memory is as follows:
+
+# Image
+
+- rd               → Destination register where the result is stored. 
+- rs1              → First source register. 
+- rs2              → Second source register. 
+- immediate        → Represent the immediate number.
+- funct3 & funct7  → Additional bits that defines the Instructions
+
+#### 3. sd Instruction :
+
+The SD (Store Doubleword) instruction in RISC-V stores a 64-bit value from a register into memory. It is available in the RV64I base ISA.
+
+# Image
+
+The way the Instruction is stored in the memory is as follows:
+
+# Image
+
+- immediate[11:5] → Represents the upper bits (11 to 5) of the immediate value used in the instruction. 
+- rs2             → Second source register used in the instruction. 
+- rs1             → First source register used in the instruction. 
+- funct3          → Defines the specific operation within the instruction category. 
+- immediate[4:0]  → Represents the lower bits (4 to 0) of the immediate value used in the instruction. 
+- opcode          → Specifies the type of instruction being executed.
+
+
+### **Types of RISC-V Instructions :**
+
+RISC-V instructions are categorized into different types based on their functionality and encoding format:
+    **1. R-Type (Register-Register Instructions)**
+        ◦ Used for arithmetic and logical operations. 
+        ◦ Example: add rd, rs1, rs2 (Addition of two registers). 
+    **2. I-Type (Immediate Instructions)**
+        ◦ Used for operations involving immediate values and load instructions. 
+        ◦ Example: addi rd, rs1, imm (Addition with an immediate value). 
+    **3. S-Type (Store Instructions)**
+        ◦ Used for storing data from registers to memory. 
+        ◦ Example: sw rs2, imm(rs1) (Store word to memory). 
+    **4. B-Type (Branch Instructions)**
+        ◦ Used for conditional branching based on comparisons. 
+        ◦ Example: beq rs1, rs2, offset (Branch if equal). 
+    **5. U-Type (Upper Immediate Instructions)**
+        ◦ Used for loading large immediate values. 
+        ◦ Example: lui rd, imm (Load upper immediate). 
+    **6. J-Type (Jump Instructions)**
+        ◦ Used for jump operations. 
+        ◦ Example: jal rd, offset (Jump and link)
+
+
+
+ 
+### **Execution of C program using ABI function calls :**
+
+In this lab, we are going to execute a C program using ABI function calls.
+
+# Image
+
+As we can see above, we are going to write a C program for computaion of sum of 1 to N numbers and from C program ABI function calls are made from Assembly language written in RISC-V ISA. ASM Language will execute them, and then, the results are returned back to the Main C program.
+
+Below is our original C program that we are going to execute using ASM function calls.
+
+```c
+
+#include <stdio.h>
+
+int main() {
+	int i, sum = 0, n = 9;
+	for(i=1; i <= n; ++i) {
+		sum += i;
+	}
+	printf("Sum of numbers from 1 to %d is %d\n", n, sum);
+	return 0;
+}
+
+```
+
+Below is the algorithm for the above C program which we will take as reference for the ASM code.
+
+# Image
+
+
+Now we have to modify the above C program to make ABI function calls as below :
+
+```c
+
+#include <stdio.h>
+
+extern int load(int x, int y); 
+
+int main() {
+	int result = 0;
+       	int count = 2;
+    	result = load(0x0, count+1);
+    	printf("Sum of number from 1 to %d is %d\n", count, result); 
+}
+
+```
+
+For the above program the Assembly language code is as follows :
+
+```asm
+
+.section .text
+.global load
+.type load, @function
+
+load:
+	add 	a4, a0, zero //Initialize sum register a4 with 0x0
+	add 	a2, a0, a1   // store count of 10 in register a2. Register a1 is loaded with 0xa 
+                                             (decimal 10) from main program
+	add	a3, a0, zero // initialize intermediate sum register a3 by 0
+loop:	add 	a4, a3, a4   // Incremental addition
+	addi 	a3, a3, 1    // Increment intermediate register by 1	
+	blt 	a3, a2, loop // If a3 is less than a2, branch to label named <loop>
+	add	a0, a4, zero // Store final result to register a0 so that it can be read by main 
+                                               program
+	ret
+
+```
+
+Now, to compile the program, using Spike Simulator run the commands as shown  below :
+
+# Image
+
+Now you can see the RISC-V Instructions as below
+
+```asm
+
+00000000000100b0 <main>:
+   100b0:       ff010113                addi    sp,sp,-16
+   100b4:       00a00593                li      a1,10
+   100b8:       00000513                li      a0,0
+   100bc:       00113423                sd      ra,8(sp)
+   100c0:       0fc000ef                jal     ra,101bc <load>
+   100c4:       00050613                mv      a2,a0
+   100c8:       00021537                lui     a0,0x21
+   100cc:       00900593                li      a1,9
+   100d0:       1a050513                addi    a0,a0,416 # 211a0 <__clzdi2+0x3c>
+   100d4:       360000ef                jal     ra,10434 <printf>
+   100d8:       00813083                ld      ra,8(sp)
+   100dc:       00000513                li      a0,0
+   100e0:       01010113                addi    sp,sp,16
+   100e4:       00008067                ret
+
+```
+
+Upto now, we compiled our C program using ABI function calls on the ASM program.
+Now its time to compile our C program on a picorv32a CPU Core.
+
+
+
+### **LAB : Execution of C program on a RISC-V CPU Core** 
+
+For this execution, we have the verilog code for the picorv32a RISC-V cpu core
+
+The methodology of this Implementation is as follows:
+
+Below are the C program and ASM code that we are going to execute...
+
+#### C Program :
+
+```C
+
+#include <stdio.h>
+
+extern int load(int x, int y); 
+
+int main() {
+	int result = 0;
+       	int count = 2;
+    	result = load(0x0, count+1);
+    	printf("Sum of number from 1 to %d is %d\n", count, result); 
+}
+
+```
+
+#### ASM Code :
+
+```asm
+
+.section .text
+.global load
+.type load, @function
+
+load:
+	add 	a4, a0, zero //Initialize sum register a4 with 0x0
+	add 	a2, a0, a1   // store count of 10 in register a2. Register a1 is loaded with 0xa 
+                                             (decimal 10) from main program
+	add	a3, a0, zero // initialize intermediate sum register a3 by 0
+loop:	add 	a4, a3, a4   // Incremental addition
+	addi 	a3, a3, 1    // Increment intermediate register by 1	
+	blt 	a3, a2, loop // If a3 is less than a2, branch to label named <loop>
+	add	a0, a4, zero // Store final result to register a0 so that it can be read by main 
+                                               program
+	ret
+
+```
+
+To execute this, we will write a testbench for the cpu core, and extract the hex file containing our C program, and store it inside the memory, from which the cpu core will execute the program.
+Then, the cpu will process the contents of the memory, and displays the result of the C program that is sum of numbers from 1 to N, on the Standard display.
+
+Below is the script file “`rv32im.sh`” to generate the hex file of our C program and load it into the memory and execute the C program on our RISC-V CPU Core written in Verilog.
+
+```bash
+
+riscv64-unknown-elf-gcc -c -mabi=ilp32 -march=rv32im -o 1to9_custom.o 1to9_custom.c 
+riscv64-unknown-elf-gcc -c -mabi=ilp32 -march=rv32im -o load.o load.S
+
+riscv64-unknown-elf-gcc -c -mabi=ilp32 -march=rv32im -o syscalls.o syscalls.c
+riscv64-unknown-elf-gcc -mabi=ilp32 -march=rv32im -Wl,--gc-sections -o firmware.elf load.o 1to9_custom.o syscalls.o -T riscv.ld -lstdc++
+chmod -x firmware.elf
+riscv64-unknown-elf-gcc -mabi=ilp32 -march=rv32im -nostdlib -o start.elf start.S -T start.ld -lstdc++
+chmod -x start.elf
+riscv64-unknown-elf-objcopy -O verilog start.elf start.tmp
+riscv64-unknown-elf-objcopy -O verilog firmware.elf firmware.tmp
+cat start.tmp firmware.tmp > firmware.hex
+python3 hex8tohex32.py firmware.hex > firmware32.hex
+rm -f start.tmp firmware.tmp
+iverilog -o testbench.vvp testbench.v picorv32.v
+chmod -x testbench.vvp
+vvp -N testbench.vvp
+
+```
+
+Now, we have to run the above script as shown below :
+
+# Image
+
+You can see above, the output of the C program implemented on RISC-V CPU Core written in Verilog.
