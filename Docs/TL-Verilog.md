@@ -95,3 +95,8 @@ Whether you're learning TL-Verilog, exploring hardware design methodologies, or 
 
 ---
 
+
+
+# validity
+
+# Clock Gating
