@@ -52,7 +52,7 @@ Unlike proprietary processor architectures, RISC-V is an open-source instruction
 
 | ![Types_of_ISA](./../Images/software_to_hardware.png) |
 | :--------------------------------------------------: |
-|           Tranlation from Software to Hardware      |
+|           Translation from Software to Hardware      |
 
 
 
