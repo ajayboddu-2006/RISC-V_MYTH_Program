@@ -323,7 +323,7 @@ risc64-unknown-elf-objdump -d sum1ton.o
 
 Now you can view the Disassemble section of <main> as follows :
 
-```asm
+```riscv
 
 Disassembly of section .text:
 
