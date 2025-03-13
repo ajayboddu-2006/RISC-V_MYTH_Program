@@ -321,7 +321,7 @@ To disassemble the code, run the below command
 risc64-unknown-elf-objdump -d sum1ton.o
 ```
 
-Now you can view the Disassemble section of `**<main> **` as follows :
+Now you can view the Disassemble section of `<main>` as follows :
 
 ```asm
 
@@ -342,3 +342,71 @@ Disassembly of section .text:
    100dc:       00008067                ret
 
 ```
+
+Here, we can see that, for the above C program to computer sum of N numbers, total no. Of instructions required is 12...
+
+Now to compile the program based on RISC instructions, type the below command in terminal.
+
+```
+spike pk sum1ton.o
+```
+
+# Image
+
+Now, you can see the output as follows...
+
+Now, using Spike Simular we can also debug the program based on RISC-V Instructions...
+To open the debug mode, type the below command, then you can view the debug mode with a prompt as (spike)
+
+```
+spike -d pk sum1ton.o
+```
+
+In the debug mode, to run the Instructions upto 100b0, type the below command..
+
+```
+(spike) until pc 0 100b0
+```
+
+Now, to view the contents of register a2, type the below commands
+
+```
+(spike) reg 0 a2
+```
+
+Now to execute the instruction, simple click “Enter”. You will see the next Instructioon being executed. Now again, view the contents of regsiter a2 
+
+```
+(spike) reg 0 a2
+```
+
+You can see the content of register a2 is changes after the execution of the Instruction.
+Similarly, you can implement furthur Instructions as follows...
+
+# Image
+
+
+## **Representation of 64-bit Number System :**
+
+The conversion of decimal to binary is a fundamental process in digital computing, as computers operate using binary (base-2) rather than decimal (base-10). 
+The coversion from Decimal to Binary is crucial because computers process and store data in binary format, enabling efficient circuit design, memory storage, and programming. Digital logic circuits, such as registers and logic gates, rely on binary signals, and low-level programming languages like Assembly directly use binary representation for execution. Additionally, binary encoding is fundamental in data transmission, networking protocols, and error detection mechanisms. By converting decimal to binary, human-readable numbers can be seamlessly interpreted and processed by computer systems, ensuring smooth operation and communication between software and hardware. 
+
+For example, consider the following number...
+
+```
+(17446744073708551615) -----> Decimal
+```
+```
+(1111001000011111010010010100110001011000100011001011110110111111)
+```
+
+Above is the binary representation of the above 64-bit decimal number...
+
+Here we need to know some Specs related to number system which are as follows:
+
+
+| Column 1 | Column 2 |
+|----------|----------|
+| Row 1, Cell 1 | Row 1, Cell 2 |
+| Row 2, Cell 1 | Row 2, Cell 2 |
+| Row 3, Cell 1 | Row 3, Cell 2 |
