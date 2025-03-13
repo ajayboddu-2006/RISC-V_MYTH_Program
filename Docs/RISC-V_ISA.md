@@ -397,7 +397,7 @@ For example, consider the following number...
 (17446744073708551615) -----> Decimal
 ```
 ```
-(1111001000011111010010010100110001011000100011001011110110111111)
+(1111001000011111010010010100110001011000100011001011110110111111)-----> Binary
 ```
 
 Above is the binary representation of the above 64-bit decimal number...
@@ -422,3 +422,29 @@ Maximum number that we can represent using 64-bit is `18,446,744,073,709,551,615
 Minimum number that we can represent using 64-bit is 0.
 
 Here, 64-bit number system is considered as `RV64 system.`
+
+
+## **RV64 representation for Unsigned and Signed Numbers :**
+
+We represent a RV64 number into signed representation using 2’s-complement.
+To convert a RV64 number into its negative form, first we have to to invert the bits and adding “1” to it.
+
+Let’s take an example as follows:
+
+# Image
+
+#### Sign-bit :
+
+```
+
+For Positive Numbers
+		MSB ----> 0(Sign-bit)
+For Negative Numbers 
+		MSB -----> 1(Sign-bit)
+
+```
+
+#### Range of RV64 Signed and Unsigned Numbers :
+
+Range of RV64 Unsigned number is 0 to (2<sup>64</sup> -1)
+Range of RV64 Signed number is -2<sup>63</sup> to 2<sup>63</sup>-1
