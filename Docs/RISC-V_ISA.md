@@ -126,7 +126,7 @@ RISC-V instructions are a set of machine-level commands that control the executi
 
 Let’s take a simple C program for Addition...
 
-```tlv
+```c
 
 #include <stdio.h>
 int main(){
