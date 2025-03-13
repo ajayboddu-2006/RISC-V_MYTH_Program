@@ -706,24 +706,24 @@ The way the Instruction is stored in the memory is as follows:
 ### **Types of RISC-V Instructions :**
 
 RISC-V instructions are categorized into different types based on their functionality and encoding format:
-    **1. R-Type (Register-Register Instructions)**
-        ◦ Used for arithmetic and logical operations. 
-        ◦ Example: add rd, rs1, rs2 (Addition of two registers). 
-    **2. I-Type (Immediate Instructions)**
-        ◦ Used for operations involving immediate values and load instructions. 
-        ◦ Example: addi rd, rs1, imm (Addition with an immediate value). 
-    **3. S-Type (Store Instructions)**
-        ◦ Used for storing data from registers to memory. 
-        ◦ Example: sw rs2, imm(rs1) (Store word to memory). 
-    **4. B-Type (Branch Instructions)**
-        ◦ Used for conditional branching based on comparisons. 
-        ◦ Example: beq rs1, rs2, offset (Branch if equal). 
-    **5. U-Type (Upper Immediate Instructions)**
-        ◦ Used for loading large immediate values. 
-        ◦ Example: lui rd, imm (Load upper immediate). 
-    **6. J-Type (Jump Instructions)**
-        ◦ Used for jump operations. 
-        ◦ Example: jal rd, offset (Jump and link)
+**1. R-Type (Register-Register Instructions)**
+    - Used for arithmetic and logical operations. 
+        - Example: add rd, rs1, rs2 (Addition of two registers). 
+**2. I-Type (Immediate Instructions)**
+    - Used for operations involving immediate values and load instructions. 
+        - Example: addi rd, rs1, imm (Addition with an immediate value). 
+**3. S-Type (Store Instructions)**
+    - Used for storing data from registers to memory. 
+        - Example: sw rs2, imm(rs1) (Store word to memory). 
+**4. B-Type (Branch Instructions)**
+    - Used for conditional branching based on comparisons. 
+        - Example: beq rs1, rs2, offset (Branch if equal). 
+**5. U-Type (Upper Immediate Instructions)**
+    - Used for loading large immediate values. 
+        - Example: lui rd, imm (Load upper immediate). 
+**6. J-Type (Jump Instructions)**
+    - Used for jump operations. 
+        - Example: jal rd, offset (Jump and link)
 
 
 <br>
