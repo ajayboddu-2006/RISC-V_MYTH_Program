@@ -33,10 +33,19 @@ The ISA defines the supported data types, the registers, how the hardware manage
 
 #Image
 
-<div align="center" style="border: 2px solid black; padding: 10px; display: inline-block;">
-    <img src="images/example.png" alt="Example Image" style="display: block; border-bottom: 2px solid black; width: 100%;"/>
-    <p style="margin: 5px 0 0; font-weight: bold;">Figure 1: Example of an Image with a Border</p>
-</div>
+<table style="border: 2px solid black; width: 100%; border-collapse: collapse;">
+    <tr>
+        <td style="border: 1px solid black; height: 200px; text-align: center;">
+	            <img src="./../Images/Types_of_ISA.png" alt="Types of ISA" width="300">
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 2px solid black; height: 50px; text-align: center;">
+            <b>Types of ISA</b>
+        </td>
+    </tr>
+</table>
+
 
 
 
