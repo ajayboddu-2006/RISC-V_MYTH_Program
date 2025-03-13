@@ -238,7 +238,7 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Floating point Addition...
 
-| ![Types_of_ISA](./../Images/.png) |
+| ![Types_of_ISA](./../Images/single_double_floating_instr.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -267,7 +267,11 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Floating point Multiplication and Division...
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/fl_point_mul_div_instr.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
+
+| ![Types_of_ISA](./../Images/fl_point_mul_div_instr_2.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -281,7 +285,7 @@ Processor which supports operations related to `Base Integer Instructions, Multi
 
 Let’s consider the followinf RISC  Instructions....
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/ABI.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -289,7 +293,7 @@ Let’s consider the followinf RISC  Instructions....
 
 The Application Binary Interface (ABI) defines the conventions for how software interacts with the underlying hardware and system software at the binary level. It specifies details such as register usage, function calling conventions, system calls, memory layout, and data type sizes. The ABI ensures compatibility between compiled programs, operating systems, and libraries, allowing executables to run seamlessly on different implementations of the same architecture. In RISC-V, the ABI standardizes how registers are assigned for function arguments, return values, and temporary storage, enabling efficient execution and interoperability across software components. Applications Bianry Interface enables users to directly interact with the memory registers to perform RISC-V operations.
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/memory_alloc_stack_ptr.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -337,7 +341,9 @@ You can view the result as follows...
 Sum of numbers from 1 to 100 is 5050
 ```
 
-# Image
+| ![Types_of_ISA](./../Images/gcc_c_program_op.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 Now to compile the above program using GCC RISC compiler, run the below commmand in terminal
 
@@ -381,7 +387,7 @@ Now to compile the program based on RISC instructions, type the below command in
 spike pk sum1ton.o
 ```
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/gcc_riscv_c_program_op.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -415,7 +421,7 @@ Now to execute the instruction, simple click “Enter”. You will see the next 
 You can see the content of register a2 is changes after the execution of the Instruction.
 Similarly, you can implement furthur Instructions as follows...
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/spike_debug.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -464,7 +470,7 @@ To convert a RV64 number into its negative form, first we have to to invert the 
 
 Let’s take an example as follows:
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/2s_complement.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -504,7 +510,7 @@ int main(){
 
 #### Output :
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/unsigned_c_program_op.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
@@ -526,6 +532,6 @@ int main() {
 
 #### Output :
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/signed_c_program_op.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
