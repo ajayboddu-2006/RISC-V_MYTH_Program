@@ -189,13 +189,13 @@ Below are the RISC-V Instructions implementing the above C program for Multiplic
 
 | ![Types_of_ISA](./../Images/./../Images/Pseudo_Base_integer_instr_2.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Pseudo & Base Integeer Instructions      |
 
 
 
 | ![Types_of_ISA](./../Images/Pseudo_Base_integer__mul_ext_instr.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Pseudo, Base Integer & Multiply Extension Instructions       |
 
 From the above RISC Instructions to implement the above C programs for Addition, Multiplication and Division, are categorized into special groups of Instructions as follows :
 
@@ -240,7 +240,7 @@ Below are the RISC-V Instructions implementing the above C program for Floating 
 
 | ![Types_of_ISA](./../Images/single_double_floating_instr.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Single and Double Floating Point Extension       |
 
 
 Now, Let’s take a simple C program for Floating point Multiplication and Division...
@@ -269,11 +269,11 @@ Below are the RISC-V Instructions implementing the above C program for Floating 
 
 | ![Types_of_ISA](./../Images/fl_point_mul_div_instr.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Single and Double Floating Point Extension      |
 
 | ![Types_of_ISA](./../Images/fl_point_mul_div_instr_2.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Single and Double Floating Point Extension       |
 
 ### **Single and Double Precision Floating point extension (RV64F & RV64D) :**
 
@@ -287,7 +287,7 @@ Let’s consider the followinf RISC  Instructions....
 
 | ![Types_of_ISA](./../Images/ABI.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Application Binary Interface       |
 
 ### **Application Binary Interface (ABI) :**
 
@@ -295,7 +295,7 @@ The Application Binary Interface (ABI) defines the conventions for how software 
 
 | ![Types_of_ISA](./../Images/memory_alloc_stack_ptr.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Memory Allocation and Stack Pointer      |
 
 ### **Memory Allocation and Stack Pointer :**
 In RISC-V, memory allocation is managed using both the stack and heap memory regions. The stack pointer (sp) plays a crucial role in maintaining the top of the stack, which grows downward in memory. It is responsible for storing local variables, function arguments, and return addresses during function calls. Each function invocation pushes data onto the stack, and once the function completes, the stack pointer is adjusted to free the allocated space. 
@@ -343,7 +343,7 @@ Sum of numbers from 1 to 100 is 5050
 
 | ![Types_of_ISA](./../Images/gcc_c_program_op.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Output for C program on sum of 1 to N numbers      |
 
 Now to compile the above program using GCC RISC compiler, run the below commmand in terminal
 
@@ -389,7 +389,7 @@ spike pk sum1ton.o
 
 | ![Types_of_ISA](./../Images/gcc_riscv_c_program_op.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Output for C program on sum of 1 to N numbers using Spike Simulator       |
 
 Now, you can see the output as follows...
 
@@ -423,7 +423,7 @@ Similarly, you can implement furthur Instructions as follows...
 
 | ![Types_of_ISA](./../Images/spike_debug.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           RISC-V Instructions Debug using Spike Simulator       |
 
 
 ## **Representation of 64-bit Number System :**
@@ -472,7 +472,7 @@ Let’s take an example as follows:
 
 | ![Types_of_ISA](./../Images/2s_complement.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|          2's complement of a number      |
 
 #### Sign-bit :
 
@@ -512,7 +512,7 @@ int main(){
 
 | ![Types_of_ISA](./../Images/unsigned_c_program_op.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Output of C program for the range defined for RV64 Unsigned Numbers       |
 
 ### **C program for Signed Numbers :**
 
@@ -534,4 +534,4 @@ int main() {
 
 | ![Types_of_ISA](./../Images/signed_c_program_op.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Output of C program for the range defined for RV64 Signed Numbers       |
