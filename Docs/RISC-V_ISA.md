@@ -544,7 +544,11 @@ The Application Binary Interface (ABI) serves as a crucial bridge between applic
 Application Binary Interface also known as the System Call Interface.
 User can access the Hardware resources through ABI via Registers.
 
-# Image
+
+| ![Types_of_ISA](./../Images/ABI_reg.png) |
+| :--------------------------------------------------: |
+|            Application Binary Interface       |
+
 
 In RISC-V Specifications we have total of 32 Registers. The width of Registers is specified by the Keyword “XLEN”.
 
@@ -563,12 +567,20 @@ There are two types of Memory Addressing systems
 
 We refer the memory in terms of Bytes. These two memory addressing systems differ in Byte ordering.
 
-# Image
+
+| ![Types_of_ISA](./../Images/byte_ordering.png) |
+| :--------------------------------------------------: |
+|           Types of Memory Addressing System      |
+
 
 
 ### Memory addressing according RISC-V(RV64) specifications :
 
-# Image
+
+| ![Types_of_ISA](./../Images/rv64_memory_addressing.png) |
+| :--------------------------------------------------: |
+|           Memory Addressing based on RV64 Specifications      |
+
 
 According to the specifications, the address of the above doubleword is m[0]
 Similarly, 
@@ -581,7 +593,11 @@ The reason for this is that the registers used in RISC-V instructions are of 5-b
 
 The significance of all 32 registers are as follows :
 
-# Image
+
+| ![Types_of_ISA](./../Images/software_to_hardware.png) |
+| :--------------------------------------------------: |
+|           Significance of 32 Rgeisters for RISCV-Architecture      |
+
 
 ### **RISC-V Instructions :**
 
@@ -589,11 +605,19 @@ The significance of all 32 registers are as follows :
 
 The `ld (Load Double-Word)` instruction in RISC-V is used to load a 64-bit (double-word) value from memory into a register. It is part of the RV64I base instruction set and is primarily used in 64-bit RISC-V architectures. 
 
-# Image
+
+| ![Types_of_ISA](./../Images/ld.png) |
+| :--------------------------------------------------: |
+|           "ld"(load doubleword)     |
+
 
 The way the Instruction is stored in the memory is as follows:
 
-# image
+
+| ![Types_of_ISA](./../Images/ld_instr.png) |
+| :--------------------------------------------------: |
+|          'ld' Instruction    |
+
 
 - rd          → Destination register where the loaded value is stored. 
 - offset(rs1) → Memory address computed by adding the offset to the value in rs1. 
@@ -605,11 +629,19 @@ The way the Instruction is stored in the memory is as follows:
 #### 2. add Instruction :
 The ADD instruction in RISC-V is used to perform integer addition between two registers. It follows the R-type instruction format.
 
-# Image
+
+| ![Types_of_ISA](./../Images/add.png) |
+| :--------------------------------------------------: |
+|           "add" Instruction |
+
 
 The way the Instruction is stored in the memory is as follows:
 
-# Image
+
+| ![Types_of_ISA](./../Images/add_instr.png) |
+| :--------------------------------------------------: |
+|           'add' Instruction      |
+
 
 - rd               → Destination register where the result is stored. 
 - rs1              → First source register. 
@@ -621,11 +653,19 @@ The way the Instruction is stored in the memory is as follows:
 
 The SD (Store Doubleword) instruction in RISC-V stores a 64-bit value from a register into memory. It is available in the RV64I base ISA.
 
-# Image
+
+| ![Types_of_ISA](./../Images/sd.png) |
+| :--------------------------------------------------: |
+|          "sd" (Store Doubleword)     |
+
 
 The way the Instruction is stored in the memory is as follows:
 
-# Image
+
+| ![Types_of_ISA](./../Images/sd_instr.png) |
+| :--------------------------------------------------: |
+|           'sd' Instruction     |
+
 
 - immediate[11:5] → Represents the upper bits (11 to 5) of the immediate value used in the instruction. 
 - rs2             → Second source register used in the instruction. 
@@ -664,7 +704,11 @@ RISC-V instructions are categorized into different types based on their function
 
 In this lab, we are going to execute a C program using ABI function calls.
 
-# Image
+
+| ![Types_of_ISA](./../Images/abi_function_call.png) |
+| :--------------------------------------------------: |
+|        Execution of C program through ABI function calls     |
+
 
 As we can see above, we are going to write a C program for computaion of sum of 1 to N numbers and from C program ABI function calls are made from Assembly language written in RISC-V ISA. ASM Language will execute them, and then, the results are returned back to the Main C program.
 
@@ -687,7 +731,11 @@ int main() {
 
 Below is the algorithm for the above C program which we will take as reference for the ASM code.
 
-# Image
+
+| ![Types_of_ISA](./../Images/asm_chart.png) |
+| :--------------------------------------------------: |
+|           ASM Diagram for C program      |
+
 
 
 Now we have to modify the above C program to make ABI function calls as below :
@@ -731,7 +779,12 @@ loop:	add 	a4, a3, a4   // Incremental addition
 
 Now, to compile the program, using Spike Simulator run the commands as shown  below :
 
-# Image
+
+| ![Types_of_ISA](./../Images/function_call_c_op.png) |
+| :--------------------------------------------------: |
+|          Output of C program through ABI function Calls    |
+
+
 
 Now you can see the RISC-V Instructions as below
 
@@ -765,6 +818,12 @@ Now its time to compile our C program on a picorv32a CPU Core.
 For this execution, we have the verilog code for the picorv32a RISC-V cpu core
 
 The methodology of this Implementation is as follows:
+
+
+| ![Types_of_ISA](./../Images/c_exec_riscv_core.png) |
+| :--------------------------------------------------: |
+|          Methodology for the Execution of C program on a RISCV CPU Core      |
+
 
 Below are the C program and ASM code that we are going to execute...
 
@@ -835,6 +894,11 @@ vvp -N testbench.vvp
 
 Now, we have to run the above script as shown below :
 
-# Image
+
+
+| ![Types_of_ISA](./../Images/c_exec_riscv_core_op.png) |
+| :--------------------------------------------------: |
+|          Output of the C program executed on RISCV CPU core      |
+
 
 You can see above, the output of the C program implemented on RISC-V CPU Core written in Verilog.
