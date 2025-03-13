@@ -406,10 +406,12 @@ Here we need to know some Specs related to number system which are as follows:
 
 ---
 
-|------------|------------|
+|              |              |
+|--------------|--------------|
 | Row 1, Col 1 | Row 1, Col 2 |
 | Row 2, Col 1 | Row 2, Col 2 |
 | Row 3, Col 1 | Row 3, Col 2 |
+
 
 ---
 
