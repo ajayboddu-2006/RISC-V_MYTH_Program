@@ -1,7 +1,6 @@
 # **Transaction-Level Verilog (TL-Verilog)**
 TL-Verilog is an emerging extension to SystemVerilog that supports transaction-level design methodology. In transaction-level design, a transaction is an entity that moves through a microarchitecture. It is operated upon and steered through the machinery by flow components such as pipelines, arbiters, and queues. A transaction might be a machine instruction, a flit of a packet, or a memory read/write. The flow of a transaction can be established independently from the logic that operates on the transaction.  
 
----
 
 ## Features of TL-Verilog
 ### Pipeline-Centric Design
@@ -34,7 +33,6 @@ TL-Verilog is an emerging extension to SystemVerilog that supports transaction-l
 
 These features make **TL-Verilog** a modern, efficient alternative for hardware design, particularly in **complex pipeline-based architectures**.
 
----
 
 # **Makerchip IDE: A Cloud-Based IDE for TL-Verilog**
 **Makerchip** is a **cloud-based integrated development environment (IDE)** designed specifically for TL-Verilog, enabling efficient **digital hardware design, simulation, and debugging**. It simplifies **RISC-V, FPGA, and ASIC** development by providing an **interactive and user-friendly** environment.
@@ -72,7 +70,7 @@ This repository showcases various TL-Verilog projects implemented using Makerchi
 
 Whether you're learning TL-Verilog, exploring hardware design methodologies, or working on RISC-V and FPGA-based applications, this collection serves as a valuable reference.
 
----
+
 
 | **Category**                | **Project Name**                     | **Source Code**                                | **Makerchip Link** | **Output Snapshot** |
 |-----------------------------|--------------------------------------|------------------------------------------------|-------------------------|---------------|
