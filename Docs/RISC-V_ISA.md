@@ -10,7 +10,7 @@ The **GNU Compiler Toolchain (GCC)** plays a crucial role in **compiling and opt
 
 Together, the **RISC-V ISA and GNU Toolchain** enable **efficient software development and execution** on RISC-V processors, bridging the gap between **software applications and underlying hardware**.
 
-
+<br>
 
 ## **Hardware and Software Interaction in RISC Computing**  
 
@@ -23,6 +23,7 @@ RISC programming focuses on writing **low-level code** that interacts directly w
 
 This makes **RISC architecture** ideal for **real-time applications, operating systems, and performance-critical tasks**.  
 
+<br>
 
 ## **Instruction Set Architecture (ISA)**  
 
@@ -36,6 +37,7 @@ The ISA defines the supported data types, the registers, how the hardware manage
 |           Types of ISA       |
 
 
+<br>
 
 ## **RISC-V Instruction set Architecture**
 
@@ -47,6 +49,7 @@ Unlike proprietary processor architectures, RISC-V is an open-source instruction
 |           RISCV - An Open Source ISA       |
 
 
+<br>
 
 ## **Translation between Software to Hardware :**
 
@@ -55,6 +58,8 @@ Unlike proprietary processor architectures, RISC-V is an open-source instruction
 |           Translation from Software to Hardware      |
 
 
+
+<br>
 
 ## **Role of RISC-V in Hardware and Software Integration**
 RISC-V acts as a common language between software applications (like operating systems, compilers, and user programs) and the processor hardware that executes instructions. This connection allows efficient instruction execution, optimizing performance, power, and cost.
@@ -77,13 +82,13 @@ RISC-V acts as a common language between software applications (like operating s
 - RISC-V simplifies hardware design with a reduced instruction set, improving power efficiency and performance.
 - Software developers can write optimized code leveraging RISC-V’s load/store architecture.
 
-
+<br>
 
 ## **Role of Hardware Description Language in bridging the gap between RISC Assembly language and Hardware :**
 
 Hardware Description Languages (HDLs) like Verilog, SystemVerilog, and VHDL play a crucial role in bridging the gap between RISC assembly language and hardware implementation. While RISC assembly defines a set of instructions that software uses to communicate with the processor, HDL is used to design the underlying hardware that executes these instructions efficiently. HDL enables the implementation of processor components such as the arithmetic logic unit (ALU), registers, control unit, and memory interfaces, ensuring proper execution of the instruction pipeline, including fetch, decode, execute, memory access, and write-back stages. By defining the datapath and control logic, HDL allows designers to create optimized microarchitectures, such as pipelined, superscalar, or out-of-order execution units, enhancing processor performance. 
 
-
+<br>
 
 ## **How Application Softwares are implemmented on Hardware?**
 
@@ -94,7 +99,7 @@ Hardware Description Languages (HDLs) like Verilog, SystemVerilog, and VHDL play
 Application software is executed on hardware through the use of system software, which acts as an intermediary between the two. System software, such as operating systems, device drivers, and firmware, provides essential services that allow application programs to interact with hardware components efficiently. 
 
 
-
+<br>
 
 ## **System Software:**
 
@@ -112,13 +117,13 @@ The compiler translates these C/C++/Java functions into corresponding RISC-V ISA
 ### Assembler :
 The assembler converts RISC-V assembly instructions into machine language, which is a binary format that the hardware can directly execute. This process is called assembly, where human-readable assembly instructions are translated into opcode and operand representations understood by the processor. 
 
-
+<br>
 
 ## **RISC Instructions: The Abstract Interface Between C Language and Physical Hardware**
 RISC (Reduced Instruction Set Computing) instructions serve as an abstract interface between high-level languages like C and the underlying physical hardware. When a C program is written, it is compiled into RISC-V assembly instructions, which are then converted into machine code that the hardware can execute.
 This abstraction allows software developers to write programs without needing to understand the intricate details of hardware implementation. At the same time, the hardware executes standardized RISC instructions, ensuring efficiency, portability, and performance optimization. This makes RISC architectures, such as RISC-V, a key bridge between software and hardware in modern computing systems.
 
-
+<br>
 
 ## **Role of Hardware Description Language (HDL) Between System Software and Hardware**
 
@@ -131,6 +136,7 @@ HDLs are used to design and describe the digital circuits and processor architec
 |          HDL - Bridge between System Software and Hardware     |
 
 
+<br>
 
 ## **RISC-V Instructions :**
 
@@ -198,15 +204,19 @@ Below are the RISC-V Instructions implementing the above C program for Multiplic
 
 From the above RISC Instructions to implement the above C programs for Addition, Multiplication and Division, are categorized into special groups of Instructions as follows :
 
+<br>
 
 ### **Pseudo Instructions :**
 Pseudo instructions in RISC-V are simplified assembly instructions that make programming easier but do not directly correspond to actual machine instructions. The assembler translates them into one or more actual RISC-V instructions. They help improve code readability and reduce programming complexity. 
 `**Eg :** mv, li, ret etc...`
 
+<br>
+
 ### **Base Integer Instructions :(RV64I)**
 The Base Integer Instruction Set in RISC-V serves as the foundation of the architecture, supporting essential operations such as arithmetic, logic, memory access, and control flow. It follows a load-store architecture, where computations are performed using registers while memory is accessed only through explicit load and store instructions. These instructions enable efficient processing and modularity, making them suitable for various applications ranging from embedded systems to high-performance computing. The base instruction set includes fundamental arithmetic and logical operations, as well as branch and jump instructions for program control. 
 Nomenclature for these kind of Instructions is `RV64I`
 `**Eg:** ld, addi, lw, sd, lu etc...`
+<br>
 
 ### **Multiply Extension : (RV64M)**
 The Multiply Extension (RV64M) in RISC-V adds hardware support for multiplication and division operations, enhancing performance for arithmetic-intensive applications. It includes instructions for signed and unsigned multiplication, division, and remainder calculations on 64-bit integers. The multiplication operations produce both lower and upper 64-bit results, while division instructions handle signed and unsigned division with proper handling of division by zero. 
@@ -274,6 +284,9 @@ Below are the RISC-V Instructions implementing the above C program for Floating 
 | :--------------------------------------------------: |
 |           Single and Double Floating Point Extension       |
 
+
+<br>
+
 ### **Single and Double Precision Floating point extension (RV64F & RV64D) :**
 
 The Single (RV64F) and Double Precision (RV64D) Floating-Point Extensions in RISC-V provide hardware support for floating-point arithmetic, enabling efficient computation for scientific, graphics, and AI applications. RV64F supports 32-bit (single-precision) floating-point operations, while RV64D extends this to 64-bit (double-precision) calculations. These extensions include addition, subtraction, multiplication, division, fused multiply-add (FMA), comparisons, and type conversions between integer and floating-point formats. 
@@ -288,6 +301,10 @@ Let’s consider the followinf RISC  Instructions....
 | :--------------------------------------------------: |
 |           Application Binary Interface       |
 
+
+<br>
+
+
 ### **Application Binary Interface (ABI) :**
 
 The Application Binary Interface (ABI) defines the conventions for how software interacts with the underlying hardware and system software at the binary level. It specifies details such as register usage, function calling conventions, system calls, memory layout, and data type sizes. The ABI ensures compatibility between compiled programs, operating systems, and libraries, allowing executables to run seamlessly on different implementations of the same architecture. In RISC-V, the ABI standardizes how registers are assigned for function arguments, return values, and temporary storage, enabling efficient execution and interoperability across software components. Applications Bianry Interface enables users to directly interact with the memory registers to perform RISC-V operations.
@@ -296,10 +313,13 @@ The Application Binary Interface (ABI) defines the conventions for how software 
 | :--------------------------------------------------: |
 |           Memory Allocation and Stack Pointer      |
 
+<br>
+
 ### **Memory Allocation and Stack Pointer :**
 In RISC-V, memory allocation is managed using both the stack and heap memory regions. The stack pointer (sp) plays a crucial role in maintaining the top of the stack, which grows downward in memory. It is responsible for storing local variables, function arguments, and return addresses during function calls. Each function invocation pushes data onto the stack, and once the function completes, the stack pointer is adjusted to free the allocated space. 
 
 <br>
+
 
 ## **Lab work  on RISC-V Software Toolchain :**
 
@@ -424,6 +444,7 @@ Similarly, you can implement furthur Instructions as follows...
 | :--------------------------------------------------: |
 |           RISC-V Instructions Debug using Spike Simulator       |
 
+<br>
 
 ## **Representation of 64-bit Number System :**
 
@@ -461,6 +482,7 @@ Minimum number that we can represent using 64-bit is 0.
 
 Here, 64-bit number system is considered as `RV64 system.`
 
+<br>
 
 ## **RV64 representation for Unsigned and Signed Numbers :**
 
@@ -489,6 +511,7 @@ For Negative Numbers
 Range of RV64 Unsigned number is 0 to (2<sup>64</sup> -1)
 Range of RV64 Signed number is -2<sup>63</sup> to 2<sup>63</sup>-1
 
+<br>
 
 
 ## **LAB : C program for RV64 Signed and Unsigned Numbers**
@@ -536,7 +559,7 @@ int main() {
 |           Output of C program for the range defined for RV64 Signed Numbers       |
 
 
-
+<br>
 
 ## **Application Binary Interface :**
 
@@ -572,7 +595,7 @@ We refer the memory in terms of Bytes. These two memory addressing systems diffe
 | :--------------------------------------------------: |
 |           Types of Memory Addressing System      |
 
-
+<br>
 
 ### Memory addressing according RISC-V(RV64) specifications :
 
@@ -587,6 +610,8 @@ Similarly,
           Address of second doubleword is m[8]
 	  Address of third doubleword is m[16]
 
+<br>
+
 ### **Why 32 registers in RISC-V Architecture :**
 
 The reason for this is that the registers used in RISC-V instructions are of 5-bit wide, And using 5-bits, we can represent 32-patterns. So, there are 32 registers in RISC-V.
@@ -598,6 +623,7 @@ The significance of all 32 registers are as follows :
 | :--------------------------------------------------: |
 |           Significance of 32 Rgeisters for RISCV-Architecture      |
 
+<br>
 
 ### **RISC-V Instructions :**
 
@@ -675,6 +701,8 @@ The way the Instruction is stored in the memory is as follows:
 - opcode          → Specifies the type of instruction being executed.
 
 
+<br>
+
 ### **Types of RISC-V Instructions :**
 
 RISC-V instructions are categorized into different types based on their functionality and encoding format:
@@ -698,7 +726,7 @@ RISC-V instructions are categorized into different types based on their function
         ◦ Example: jal rd, offset (Jump and link)
 
 
-
+<br>
  
 ### **Execution of C program using ABI function calls :**
 
@@ -811,7 +839,7 @@ Now you can see the RISC-V Instructions as below
 Upto now, we compiled our C program using ABI function calls on the ASM program.
 Now its time to compile our C program on a picorv32a CPU Core.
 
-
+<br>
 
 ### **LAB : Execution of C program on a RISC-V CPU Core** 
 
