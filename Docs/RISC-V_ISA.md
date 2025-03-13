@@ -144,3 +144,165 @@ int main(){
 
 ```
 
+Below are the RISC-V Instructions implementing the above C program for Addition...
+
+# image
+
+Now, Let’s take a simple C program for Multiplication and Division...
+
+```c
+
+#include <stdio.h>
+int main(){
+	int num1, num2;
+	register int mul, div;
+	printf("\nEnter the Number 1 : ");
+	scanf("%d", &num1);
+	printf("\nEnter the Number 2 : ");
+	scanf("%d", &num2);
+	mul = num1 * num2;
+	div = num1 / num2;
+	printf("\nInt Multiplication of Numbers : %d", mul);
+	printf("\nInt Division of Numbers : %d", div);
+	printf("\n");
+	return 0;
+}
+
+```
+
+Below are the RISC-V Instructions implementing the above C program for Multiplication and Division...
+
+# image
+
+
+From the above RISC Instructions to implement the above C programs for Addition, Multiplication and Division, are categorized into special groups of Instructions as follows :
+
+
+### **Pseudo Instructions :**
+Pseudo instructions in RISC-V are simplified assembly instructions that make programming easier but do not directly correspond to actual machine instructions. The assembler translates them into one or more actual RISC-V instructions. They help improve code readability and reduce programming complexity. 
+`**Eg :** mv, li, ret etc...`
+
+### **Base Integer Instructions :(RV64I)**
+The Base Integer Instruction Set in RISC-V serves as the foundation of the architecture, supporting essential operations such as arithmetic, logic, memory access, and control flow. It follows a load-store architecture, where computations are performed using registers while memory is accessed only through explicit load and store instructions. These instructions enable efficient processing and modularity, making them suitable for various applications ranging from embedded systems to high-performance computing. The base instruction set includes fundamental arithmetic and logical operations, as well as branch and jump instructions for program control. 
+Nomenclature for these kind of Instructions is `RV64I`
+`**Eg:** ld, addi, lw, sd, lu etc...`
+
+### **Multiply Extension : (RV64M)**
+The Multiply Extension (RV64M) in RISC-V adds hardware support for multiplication and division operations, enhancing performance for arithmetic-intensive applications. It includes instructions for signed and unsigned multiplication, division, and remainder calculations on 64-bit integers. The multiplication operations produce both lower and upper 64-bit results, while division instructions handle signed and unsigned division with proper handling of division by zero. 
+Nomenclature for these kind of Instructions is `RV64M`.
+Processor which supports both operations related to Base Integer and Multiply Extension Instructions is known as `RV64IM CPU Core`
+`**Eg:** divw, mulw etc.`
+
+
+Now, Let’s take a simple C program for Floating point Addition...
+
+```c
+
+#include <stdio.h>
+int main(){ 
+	float num1, num2;
+	register float sum;
+	printf("\nEnter the Number 1 : ");
+	scanf("%f", &num1);
+	printf("\nEnter the Number 2 : ");
+	scanf("%f", &num2);
+	sum = num1 + num2;
+	printf("\nSum of Numbers : %f", sum);
+	printf("\n");
+	return 0;
+}
+
+```
+
+Below are the RISC-V Instructions implementing the above C program for Floating point Addition...
+
+# Image
+
+
+Now, Let’s take a simple C program for Floating point Multiplication and Division...
+
+```c
+
+#include <stdio.h>
+int main(){
+	float num1, num2;
+	register float mul, div;
+	printf("\nEnter the Number 1 : ");
+	scanf("%f", &num1);
+	printf("\nEnter the Number 2 : ");
+	scanf("%f", &num2);
+	mul = num1 * num2;
+	div = num1 / num2;
+	printf("\nInt Multiplication of Numbers : %f", mul);
+	printf("\nInt Division of Numbers : %f", div);
+	printf("\n");
+	return 0;
+}
+
+```
+
+Below are the RISC-V Instructions implementing the above C program for Floating point Multiplication and Division...
+
+# Image
+
+### **Single and Double Precision Floating point extension (RV64F & RV64D) :**
+
+The Single (RV64F) and Double Precision (RV64D) Floating-Point Extensions in RISC-V provide hardware support for floating-point arithmetic, enabling efficient computation for scientific, graphics, and AI applications. RV64F supports 32-bit (single-precision) floating-point operations, while RV64D extends this to 64-bit (double-precision) calculations. These extensions include addition, subtraction, multiplication, division, fused multiply-add (FMA), comparisons, and type conversions between integer and floating-point formats. 
+Nomenclature for Single Precision Floating Point Extension Instructionsis `RV64F.`
+Nomenclature for Double Precision Floating Point Extension Instructionsis `RV64D.`
+Processor which supports operations related to `Base Integer Instructions, Multiply Extension Instructions, Single Precision Floating Point Extension Instructionsis and Double Precision Floating point Extension Instructions` is known as `RV64IMFD CPU Core`.
+`**Eg:** flw, fmv, fmul, fdiv etc...`
+
+Let’s consider the followinf RISC  Instructions....
+
+# Image
+
+### **Application Binary Interface (ABI) :**
+
+The Application Binary Interface (ABI) defines the conventions for how software interacts with the underlying hardware and system software at the binary level. It specifies details such as register usage, function calling conventions, system calls, memory layout, and data type sizes. The ABI ensures compatibility between compiled programs, operating systems, and libraries, allowing executables to run seamlessly on different implementations of the same architecture. In RISC-V, the ABI standardizes how registers are assigned for function arguments, return values, and temporary storage, enabling efficient execution and interoperability across software components. Applications Bianry Interface enables users to directly interact with the memory registers to perform RISC-V operations.
+
+# Image
+
+### **Memory Allocation and Stack Pointer :**
+In RISC-V, memory allocation is managed using both the stack and heap memory regions. The stack pointer (sp) plays a crucial role in maintaining the top of the stack, which grows downward in memory. It is responsible for storing local variables, function arguments, and return addresses during function calls. Each function invocation pushes data onto the stack, and once the function completes, the stack pointer is adjusted to free the allocated space. 
+
+<br>
+
+## **Lab work  on RISC-V Software Toolchain :**
+
+In this lab, we will compile and disassemble a C program on Sum of N numbers intp RISC-V instructions using GCC Compiler and we will simulate and debug the RISC Instructions using Spike Simulator.
+
+Below is the C program for Sum of Numbers from 1 to N...
+
+```c
+
+#include <stdio.h>
+
+int main() {
+	int i, sum = 0, n = 100;
+	for(i=1; i <= n; ++i) {
+		sum += i;
+	}
+	printf("Sum of numbers from 1 to %d is %d\n", n, sum);
+	return 0;
+}
+
+```
+
+Now open the terminal and compile the above C program using the gcc C compiler by using the below command
+
+```bash
+gcc sum1ton.c
+```
+
+Now type the below command to view the results
+
+```bash
+./a.out
+```
+
+You can view the result as follows...
+
+```bash
+Sum of numbers from 1 to 100 is 5050
+```
