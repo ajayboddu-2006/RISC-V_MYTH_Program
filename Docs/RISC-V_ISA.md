@@ -448,3 +448,45 @@ For Negative Numbers
 
 Range of RV64 Unsigned number is 0 to (2<sup>64</sup> -1)
 Range of RV64 Signed number is -2<sup>63</sup> to 2<sup>63</sup>-1
+
+
+
+## **LAB : C program for RV64 Signed and Unsigned Numbers**
+
+### **C program for Unsigned Numbers :**
+
+```c
+
+#include <stdio.h>
+#include <math.h>
+int main(){
+	unsigned long long int max_value = (unsigned long long int) (pow(2, 64) - 1);
+	printf("HIghest value of Unsigned Integer value in 64-bit format is %llu\n", max_value);
+	return 0;
+}
+
+```
+
+#### Output :
+
+# Image
+
+### **C program for Signed Numbers :**
+
+```c
+
+#include <stdio.h>
+#include <math.h>
+int main() {
+	long long int max_value = (long long int) (pow(2, 63)-1);
+	long long int min_value = (long long int) ((pow(2, 63)-1)*(-1));
+	printf("Max value of Signed integer for 64 bit format is %lld\n", max_value);
+	printf("Min value of Signed integer for 64 bit format is %lld\n", min_value);
+	return 0;
+}
+
+```
+
+#### Output :
+
+# Image
