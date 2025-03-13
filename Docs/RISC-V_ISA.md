@@ -291,13 +291,13 @@ int main() {
 
 Now open the terminal and compile the above C program using the gcc C compiler by using the below command
 
-```sh
+```
 gcc sum1ton.c
 ```
 
 Now type the below command to view the results
 
-```sh
+```
 ./a.out
 ```
 
@@ -305,4 +305,40 @@ You can view the result as follows...
 
 ```sh
 Sum of numbers from 1 to 100 is 5050
+```
+
+# Image
+
+Now to compile the above program using GCC RISC compiler, run the below commmand in terminal
+
+```
+riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+```
+
+To disassemble the code, run the below command
+
+```
+risc64-unknown-elf-objdump -d sum1ton.o
+```
+
+Now you can view the Disassemble section of <main> as follows :
+
+```asm
+
+Disassembly of section .text:
+
+00000000000100b0 <main>:
+   100b0:       00001637                lui     a2,0x1
+   100b4:       00021537                lui     a0,0x21
+   100b8:       ff010113                addi    sp,sp,-16
+   100bc:       3ba60613                addi    a2,a2,954 # 13ba <main-0xecf6>
+   100c0:       06400593                li      a1,100
+   100c4:       18050513                addi    a0,a0,384 # 21180 <__clzdi2+0x44>
+   100c8:       00113423                sd      ra,8(sp)
+   100cc:       340000ef                jal     ra,1040c <printf>
+   100d0:       00813083                ld      ra,8(sp)
+   100d4:       00000513                li      a0,0
+   100d8:       01010113                addi    sp,sp,16
+   100dc:       00008067                ret
+
 ```
