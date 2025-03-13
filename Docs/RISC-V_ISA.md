@@ -31,40 +31,12 @@ An Instruction Set Architecture (ISA) is part of the abstract model of a compute
 The ISA provides the only way through which a user is able to interact with the hardware. It can be viewed as a programmer’s manual because it’s the portion of the machine that’s visible to the assembly language programmer, the compiler writer, and the application programmer.
 The ISA defines the supported data types, the registers, how the hardware manages main memory, key features (such as virtual memory), which instructions a microprocessor can execute, and the input/output model of multiple ISA implementations. The ISA can be extended by adding instructions or other capabilities, or by adding support for larger addresses and data values.
 
-#Image
 
-<table style="border: 2px solid black; width: 100%; border-collapse: collapse;">
-    <tr>
-        <td style="border: 1px solid black; height: 200px; text-align: center;">
-	            <img src="./../Images/Types_of_ISA.png" alt="Types of ISA" width="300">
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 2px solid black; height: 50px; text-align: center;">
-            <center><b>Types of ISA</b></center>
-        </td>
-    </tr>
-</table>
-
----
-
-<div style="display: flex; justify-content: center;">
-    <table style="border: 2px solid black; width: 50%; border-collapse: collapse; text-align: center;">
-        <tr>
-            <td style="border-bottom: 2px solid black; padding: 10px;">
-                <img src="./../Images/Types_of_ISA.png" alt="Types_of_ISA" width="300">
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; font-weight: bold;">
-                Types of ISA
-            </td>
-        </tr>
-    </table>
-</div>
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 
----
 
 ## **RISC-V Instruction set Architecture**
 
