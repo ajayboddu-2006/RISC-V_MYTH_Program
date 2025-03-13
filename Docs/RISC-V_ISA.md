@@ -33,6 +33,12 @@ The ISA defines the supported data types, the registers, how the hardware manage
 
 #Image
 
+<div align="center">
+    <img src="./../Images/Types_of_ISA.png" alt="Types of ISA" style="border: 2px solid black;"/>
+    <p>Types of ISA</p>
+</div>
+
+
 ---
 
 ## **RISC-V Instruction set Architecture**
