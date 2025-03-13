@@ -407,9 +407,9 @@ Here we need to know some Specs related to number system which are as follows:
 
 |              |              |
 |--------------|--------------|
-| Row 1, Col 1 | Row 1, Col 2 |
-| Row 2, Col 1 | Row 2, Col 2 |
-| Row 3, Col 1 | Row 3, Col 2 |
+| 8-bytes or 2-words |  Double Word/8-bytes |
+| 4-bytes | Word |
+| 8-bits | 1-byte |
 
 
  No. of patterns we can represent using n-bit representation is `(2n – 1)`
@@ -418,7 +418,7 @@ So, using 64-bit number Representation, we can represent (2<sup>64</sup>
  -1) patterns.
 
 
-Maximum number that we can represent using 64-bit is 18,446,744,073,709,551,615.
+Maximum number that we can represent using 64-bit is `18,446,744,073,709,551,615.`
 Minimum number that we can represent using 64-bit is 0.
 
 Here, 64-bit number system is considered as `RV64 system.`
