@@ -321,9 +321,9 @@ To disassemble the code, run the below command
 risc64-unknown-elf-objdump -d sum1ton.o
 ```
 
-Now you can view the Disassemble section of <main> as follows :
+Now you can view the Disassemble section of `**<main> **` as follows :
 
-```riscv
+```asm
 
 Disassembly of section .text:
 
