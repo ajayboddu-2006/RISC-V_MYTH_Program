@@ -404,8 +404,18 @@ Above is the binary representation of the above 64-bit decimal number...
 
 Here we need to know some Specs related to number system which are as follows:
 
-|--------------------|----------------------|
-| 8-bytes or 2-words |  Double Word/8-bytes |
-| 4-bytes | Word |
-| 8-bits | 1-byte |
+---
+
+|------------|------------|
+| Row 1, Col 1 | Row 1, Col 2 |
+| Row 2, Col 1 | Row 2, Col 2 |
+| Row 3, Col 1 | Row 3, Col 2 |
+
+---
+
+| Column 1 | Column 2 |
+|----------|----------|
+| Row 1, Cell 1 | Row 1, Cell 2 |
+| Row 2, Cell 1 | Row 2, Cell 2 |
+| Row 3, Cell 1 | Row 3, Cell 2 |
 
