@@ -849,6 +849,15 @@ Now its time to compile our C program on a picorv32a CPU Core.
 
 ### **LAB : Execution of C program on a RISC-V CPU Core** 
 
+To perform this lab, first of all, clone a github repository, which consists of our RISCV CPU Core written in Verilog using the below command.
+
+```bash
+git clone https://github.com/kunalg123/riscv_workshop_collaterals.git
+```
+
+Now, Inside the repository you will find all files related to this lab inside the `labs` directory.
+
+
 For this execution, we have the verilog code for the picorv32a RISC-V cpu core
 
 The methodology of this Implementation is as follows:
