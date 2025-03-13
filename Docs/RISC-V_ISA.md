@@ -404,7 +404,6 @@ Above is the binary representation of the above 64-bit decimal number...
 
 Here we need to know some Specs related to number system which are as follows:
 
----
 
 |              |              |
 |--------------|--------------|
@@ -413,11 +412,13 @@ Here we need to know some Specs related to number system which are as follows:
 | Row 3, Col 1 | Row 3, Col 2 |
 
 
----
+ No. of patterns we can represent using n-bit representation is `(2n – 1)`
 
-| Column 1 | Column 2 |
-|----------|----------|
-| Row 1, Cell 1 | Row 1, Cell 2 |
-| Row 2, Cell 1 | Row 2, Cell 2 |
-| Row 3, Cell 1 | Row 3, Cell 2 |
+So, using 64-bit number Representation, we can represent (2<sup>64</sup>
+ -1) patterns.
 
+
+Maximum number that we can represent using 64-bit is 18,446,744,073,709,551,615.
+Minimum number that we can represent using 64-bit is 0.
+
+Here, 64-bit number system is considered as `RV64 system.`
