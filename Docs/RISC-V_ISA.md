@@ -23,7 +23,6 @@ RISC programming focuses on writing **low-level code** that interacts directly w
 
 This makes **RISC architecture** ideal for **real-time applications, operating systems, and performance-critical tasks**.  
 
----
 
 ## **Instruction Set Architecture (ISA)**  
 
@@ -47,7 +46,7 @@ Unlike proprietary processor architectures, RISC-V is an open-source instruction
 | :--------------------------------------------------: |
 |           RISCV - An Open Source ISA       |
 
----
+
 
 ## **Translation between Software to Hardware :**
 
@@ -55,7 +54,7 @@ Unlike proprietary processor architectures, RISC-V is an open-source instruction
 | :--------------------------------------------------: |
 |           Tranlation from Software to Hardware      |
 
----
+
 
 ## **Role of RISC-V in Hardware and Software Integration**
 RISC-V acts as a common language between software applications (like operating systems, compilers, and user programs) and the processor hardware that executes instructions. This connection allows efficient instruction execution, optimizing performance, power, and cost.
@@ -78,13 +77,13 @@ RISC-V acts as a common language between software applications (like operating s
 - RISC-V simplifies hardware design with a reduced instruction set, improving power efficiency and performance.
 - Software developers can write optimized code leveraging RISC-V’s load/store architecture.
 
----
+
 
 ## **Role of Hardware Description Language in bridging the gap between RISC Assembly language and Hardware :**
 
 Hardware Description Languages (HDLs) like Verilog, SystemVerilog, and VHDL play a crucial role in bridging the gap between RISC assembly language and hardware implementation. While RISC assembly defines a set of instructions that software uses to communicate with the processor, HDL is used to design the underlying hardware that executes these instructions efficiently. HDL enables the implementation of processor components such as the arithmetic logic unit (ALU), registers, control unit, and memory interfaces, ensuring proper execution of the instruction pipeline, including fetch, decode, execute, memory access, and write-back stages. By defining the datapath and control logic, HDL allows designers to create optimized microarchitectures, such as pipelined, superscalar, or out-of-order execution units, enhancing processor performance. 
 
----
+
 
 ## **How Application Softwares are implemmented on Hardware?**
 
@@ -95,7 +94,7 @@ Hardware Description Languages (HDLs) like Verilog, SystemVerilog, and VHDL play
 Application software is executed on hardware through the use of system software, which acts as an intermediary between the two. System software, such as operating systems, device drivers, and firmware, provides essential services that allow application programs to interact with hardware components efficiently. 
 
 
----
+
 
 ## **System Software:**
 
@@ -113,13 +112,13 @@ The compiler translates these C/C++/Java functions into corresponding RISC-V ISA
 ### Assembler :
 The assembler converts RISC-V assembly instructions into machine language, which is a binary format that the hardware can directly execute. This process is called assembly, where human-readable assembly instructions are translated into opcode and operand representations understood by the processor. 
 
----
+
 
 ## **RISC Instructions: The Abstract Interface Between C Language and Physical Hardware**
 RISC (Reduced Instruction Set Computing) instructions serve as an abstract interface between high-level languages like C and the underlying physical hardware. When a C program is written, it is compiled into RISC-V assembly instructions, which are then converted into machine code that the hardware can execute.
 This abstraction allows software developers to write programs without needing to understand the intricate details of hardware implementation. At the same time, the hardware executes standardized RISC instructions, ensuring efficiency, portability, and performance optimization. This makes RISC architectures, such as RISC-V, a key bridge between software and hardware in modern computing systems.
 
----
+
 
 ## **Role of Hardware Description Language (HDL) Between System Software and Hardware**
 
@@ -131,7 +130,7 @@ HDLs are used to design and describe the digital circuits and processor architec
 | :--------------------------------------------------: |
 |          HDL - Bridge between System Software and Hardware     |
 
----
+
 
 ## **RISC-V Instructions :**
 
