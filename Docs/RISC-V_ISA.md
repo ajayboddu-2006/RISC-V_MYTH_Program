@@ -99,9 +99,9 @@ Application software is executed on hardware through the use of system software,
 
 ## **System Software:**
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/system_software.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       | 
+|          System Software     | 
 
 ### Operating System :
 In system software, the operating system (OS) acts as a bridge between application software and hardware. When an application runs, the OS translates its high-level operations into corresponding C/C++/Java functions or system calls. These functions interact with the OS kernel, which manages resources like memory, CPU scheduling, file systems, and input/output operations. 
@@ -127,9 +127,9 @@ Between system software and hardware, Hardware Description Language (HDL) acts a
 While system software, including compilers, assemblers, and operating systems, translates high-level application code into machine instructions, these instructions need to be executed efficiently by the underlying hardware. 
 HDLs are used to design and describe the digital circuits and processor architectures that execute system software instructions. 
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/SystemSoftware_HDL_Hardware.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|          HDL - Bridge between System Software and Hardware     |
 
 ---
 
@@ -159,9 +159,9 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Addition...
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/Pseudo_Base_integer_instr.png) |
 | :--------------------------------------------------: |
-|           Types of ISA       |
+|           Pseudo Instructions & Base Integer Instructions     |
 
 Now, Let’s take a simple C program for Multiplication and Division...
 
@@ -187,10 +187,15 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Multiplication and Division...
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/./../Images/Pseudo_Base_integer_instr_2.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
+
+
+| ![Types_of_ISA](./../Images/Pseudo_Base_integer__mul_ext_instr.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 From the above RISC Instructions to implement the above C programs for Addition, Multiplication and Division, are categorized into special groups of Instructions as follows :
 
@@ -233,7 +238,7 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Floating point Addition...
 
-| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| ![Types_of_ISA](./../Images/.png) |
 | :--------------------------------------------------: |
 |           Types of ISA       |
 
