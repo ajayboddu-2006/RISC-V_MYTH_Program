@@ -43,13 +43,17 @@ The ISA defines the supported data types, the registers, how the hardware manage
 RISC-V is an open-source instruction set architecture used to develop custom processors for a variety of applications, from embedded designs to supercomputers. 
 Unlike proprietary processor architectures, RISC-V is an open-source instruction set architecture (ISA) used for the development of custom processors targeting a variety of end applications. Originally developed at the University of California, Berkeley, the RISC-V ISA is considered the fifth generation of processors built on the concept of the reduced instruction set computer (RISC). Due to its openness and its technical merits, it has become very popular in recent years 
 
-#Image
+| ![RISCV](./../Images/RISCV_logo.png) |
+| :--------------------------------------------------: |
+|           RISCV - An Open Source ISA       |
 
 ---
 
 ## **Translation between Software to Hardware :**
 
-#Image 
+| ![Types_of_ISA](./../Images/software_to_hardware.png) |
+| :--------------------------------------------------: |
+|           Tranlation from Software to Hardware      |
 
 ---
 
@@ -84,7 +88,9 @@ Hardware Description Languages (HDLs) like Verilog, SystemVerilog, and VHDL play
 
 ## **How Application Softwares are implemmented on Hardware?**
 
-#Image
+| ![Types_of_ISA](./../Images/App_to_Hardware.png) |
+| :--------------------------------------------------: |
+|           Application Software to Hardware       |
 
 Application software is executed on hardware through the use of system software, which acts as an intermediary between the two. System software, such as operating systems, device drivers, and firmware, provides essential services that allow application programs to interact with hardware components efficiently. 
 
@@ -93,7 +99,9 @@ Application software is executed on hardware through the use of system software,
 
 ## **System Software:**
 
-#Image 
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       | 
 
 ### Operating System :
 In system software, the operating system (OS) acts as a bridge between application software and hardware. When an application runs, the OS translates its high-level operations into corresponding C/C++/Java functions or system calls. These functions interact with the OS kernel, which manages resources like memory, CPU scheduling, file systems, and input/output operations. 
@@ -119,7 +127,9 @@ Between system software and hardware, Hardware Description Language (HDL) acts a
 While system software, including compilers, assemblers, and operating systems, translates high-level application code into machine instructions, these instructions need to be executed efficiently by the underlying hardware. 
 HDLs are used to design and describe the digital circuits and processor architectures that execute system software instructions. 
 
-#Image 
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 ---
 
@@ -149,7 +159,9 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Addition...
 
-# image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 Now, Let’s take a simple C program for Multiplication and Division...
 
@@ -175,7 +187,9 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Multiplication and Division...
 
-# image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 
 From the above RISC Instructions to implement the above C programs for Addition, Multiplication and Division, are categorized into special groups of Instructions as follows :
@@ -219,7 +233,9 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Floating point Addition...
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 
 Now, Let’s take a simple C program for Floating point Multiplication and Division...
@@ -246,7 +262,9 @@ int main(){
 
 Below are the RISC-V Instructions implementing the above C program for Floating point Multiplication and Division...
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 ### **Single and Double Precision Floating point extension (RV64F & RV64D) :**
 
@@ -258,13 +276,17 @@ Processor which supports operations related to `Base Integer Instructions, Multi
 
 Let’s consider the followinf RISC  Instructions....
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 ### **Application Binary Interface (ABI) :**
 
 The Application Binary Interface (ABI) defines the conventions for how software interacts with the underlying hardware and system software at the binary level. It specifies details such as register usage, function calling conventions, system calls, memory layout, and data type sizes. The ABI ensures compatibility between compiled programs, operating systems, and libraries, allowing executables to run seamlessly on different implementations of the same architecture. In RISC-V, the ABI standardizes how registers are assigned for function arguments, return values, and temporary storage, enabling efficient execution and interoperability across software components. Applications Bianry Interface enables users to directly interact with the memory registers to perform RISC-V operations.
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 ### **Memory Allocation and Stack Pointer :**
 In RISC-V, memory allocation is managed using both the stack and heap memory regions. The stack pointer (sp) plays a crucial role in maintaining the top of the stack, which grows downward in memory. It is responsible for storing local variables, function arguments, and return addresses during function calls. Each function invocation pushes data onto the stack, and once the function completes, the stack pointer is adjusted to free the allocated space. 
@@ -354,7 +376,9 @@ Now to compile the program based on RISC instructions, type the below command in
 spike pk sum1ton.o
 ```
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 Now, you can see the output as follows...
 
@@ -386,7 +410,9 @@ Now to execute the instruction, simple click “Enter”. You will see the next 
 You can see the content of register a2 is changes after the execution of the Instruction.
 Similarly, you can implement furthur Instructions as follows...
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 
 ## **Representation of 64-bit Number System :**
@@ -417,8 +443,7 @@ Here we need to know some Specs related to number system which are as follows:
 
  No. of patterns we can represent using n-bit representation is `(2n – 1)`
 
-So, using 64-bit number Representation, we can represent (2<sup>64</sup>
- -1) patterns.
+So, using 64-bit number Representation, we can represent (2<sup>64</sup> - 1) patterns.
 
 
 Maximum number that we can represent using 64-bit is `18,446,744,073,709,551,615.`
@@ -434,7 +459,9 @@ To convert a RV64 number into its negative form, first we have to to invert the 
 
 Let’s take an example as follows:
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 #### Sign-bit :
 
@@ -472,7 +499,9 @@ int main(){
 
 #### Output :
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
 
 ### **C program for Signed Numbers :**
 
@@ -492,4 +521,6 @@ int main() {
 
 #### Output :
 
-# Image
+| ![Types_of_ISA](./../Images/Types_of_ISA.png) |
+| :--------------------------------------------------: |
+|           Types of ISA       |
