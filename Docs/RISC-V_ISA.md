@@ -594,7 +594,7 @@ The reason for this is that the registers used in RISC-V instructions are of 5-b
 The significance of all 32 registers are as follows :
 
 
-| ![Types_of_ISA](./../Images/software_to_hardware.png) |
+| ![Types_of_ISA](./../Images/reg_32.png) |
 | :--------------------------------------------------: |
 |           Significance of 32 Rgeisters for RISCV-Architecture      |
 
