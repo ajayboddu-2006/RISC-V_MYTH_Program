@@ -6,6 +6,8 @@ In a single-cycle processor, all components—including instruction fetch, decod
 
 This design serves as a foundation for more advanced architectures like pipelined and superscalar processors. 
 
+<br>
+
 ## Microarchitecture of RISCV CPU(RV32) :
 
 The microarchitecture of a RISC-V CPU defines the internal structure and data flow required to execute instructions efficiently. It consists of several key components that work together to fetch, decode, execute, and store results. The microarchitecture follows the principles of the RISC-V ISA.
@@ -14,6 +16,9 @@ The microarchitecture of a RISC-V CPU defines the internal structure and data fl
 | ![RISC_CPU](./../Images/riscv_cpu_architecture.png) |
 | :--------------------------------------------------: |
 |           RISC-V CPU Micro Architecture     |
+
+
+<br>
 
 ### **Key Components of RISC-V CPU Microarchitecture**  
 
@@ -41,6 +46,7 @@ The microarchitecture of a RISC-V CPU defines the internal structure and data fl
    - Evaluates branch conditions for **conditional jumps**.  
    - Supports shift operations (SLL, SRL, SRA).
 
+<br>
 
 ## **RISCV Assembly code :**
 On our designed RISCV CPU core in TL-Verilog, we are going to execute below M4 Assembly code
@@ -106,7 +112,7 @@ This **M4 assembly code** calculates the sum of numbers from **0 to 9** using a 
 This assembly program initializes registers, runs a loop **10 times** to sum numbers **0 to 9**, stores the final sum in `r10`.
 
 
-Starter Code :
+## ** Starter Code :**
 To accesss the strater  code(RISCV Shell), get into the below Github repository and get the starter code in Makerchip IDE.
 
 `https://github.com/stevehoover/RISC-V_MYTH_Workshop`
@@ -117,13 +123,15 @@ Access the starter code as shown in below image
 | :--------------------------------------------------: |
 |           Starter Code      |
 
-Starter code contains :
+**Starter code contains :**
 - A simple RISC-V assembler.
 - An instruction memory containing the sum 1..9 test program.
 - Commented code for register file and memory.
 - Visualization.
 
 Now, we can start designing various components of RV32 RISCV CPU Core...
+
+<br>
 
 ### **Program Counter**
  
@@ -133,6 +141,8 @@ $pc[31:0] = (>>1$reset) ? '0 :>>1$pc + 32'h4;
 ```
 - If reset is active → Set pc = 0.
 - Otherwise → Increment pc by 4 (move to the next instruction).
+
+<br>
 
 ### **Instruction Memory :**
 
@@ -146,6 +156,8 @@ $imem_rd_addr[31:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
 
 - imem_rd_en → Enabled (1) when reset = 0, disabled (0) on reset.
 - imem_rd_addr → Address derived from PC, ensuring word-aligned access.
+
+<br>
 
 ### **Instruction Decode Logic**
 
@@ -174,6 +186,8 @@ Below is the table describing the Type of Instructions based on the opcode
          $is_j_instr = $instr[6:2] == 5'b11011;
 ```
 
+<br>
+
 **Fetch Instruction:** $instr = $imem_rd_data (loads instruction from memory).
 
 Identify Instruction Types Based on `Opcode (instr[6:2])`:
@@ -187,6 +201,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 | **B-type** (`is_b_instr`) | `11000` |
 | **J-type** (`is_j_instr`) | `11011` |
 
+<br>
 
 ### **Immediate Instruction Decode Logic**  
 
@@ -213,14 +228,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
   - **Default (`else`)** → `32'b0` (Zero for non-immediate instructions).  
 
 
-
-
-
-
-
-
-
-
+<br>
 
 ### **Instruction Field Validity Checks**  
 
@@ -240,6 +248,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 - **`$funct7_valid`** → `funct7` is only relevant for **R-type** instructions.  
 - **`$opcode[6:0]`** → Extracts the **7-bit opcode** from the instruction.  
 
+<br>
 
 
 ### **Instruction Component Extraction**  
@@ -272,7 +281,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 - **`$funct7[6:0]`** → Extracts `funct7` from bits **[31:25]** if `$funct7_valid` is true.  
 
 
-
+<br>
 
 ### **Instruction Operation Decoding**  
 
@@ -294,6 +303,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 ```
 
+
 ### **Instruction Operation Decoding** 
 
 - **`$dec_bits[10:0]`** → Combines `funct7[5]`, `funct3`, and `opcode` to decide the instruction operation.  
@@ -310,6 +320,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 - **`$is_addi`** → Add Immediate (`000_0010011`).  
 - **`$is_add`** → Add (`0_000_0110011`).  
 
+<br>
 
 ### **Register File :**
 
@@ -334,6 +345,7 @@ Before defining the code for Register file, uncommment `m4+rf(@1, @1)` for Regis
 - **`src1_value`** → Stores the data read from `rs1`.  
 - **`src2_value`** → Stores the data read from `rs2`.
 
+<br>
 
 ### **Arithmetic Logic Unit :**
 
@@ -360,7 +372,8 @@ The ALU (Arithmetic Logic Unit) is responsible for executing arithmetic operatio
      $result = $src1_value + $src2_value
      ```
    - For other instructions, the result is **undefined (`32'bx`)**.
-  
+
+  <br>
 
 ### **Register File Write Operation**  
 
@@ -386,7 +399,7 @@ The register file write operation ensures that computation results are stored in
 3. **Write Data (`$rf_wr_data[31:0]`)**  
    - The computed result (`$result[31:0]`) is written into the register file at the specified **destination register (`rd`)**.  
 
-
+<br>
 
 ### **Branch Instruction Evaluation**  
 ```tlv
@@ -422,7 +435,7 @@ This logic determines whether a branch should be taken based on different RISC-V
    - **Signed comparisons (`BLT`, `BGE`)** use **XOR** to handle sign-bit differences.  
    - **Unsigned comparisons (`BLTU`, `BGEU`)** are directly checked.  
 
-
+<br>
 
 ### **Branch Target Address Calculation**  
 ```tlv
@@ -444,6 +457,8 @@ This logic updates the **branch target address** when a branch instruction is ex
 2. **Purpose:**  
    - If a branch instruction evaluates **true**, execution jumps to `$br_tgt_pc`.  
    - Used in **loops, conditional jumps, and branching operations**.  
+
+<br>
 
 ### **Program Counter (PC) Update with Branch Support**  
 
@@ -468,6 +483,7 @@ This logic updates the **Program Counter (PC)** to handle both **sequential exec
    - If no branch is taken, increment PC by **4** (next instruction).  
    - Standard **instruction fetch** for **32-bit instructions** in RISC-V.  
 
+<br>
 
 ### **Testbench for Simulation Verification**  
 
@@ -489,6 +505,8 @@ This testbench logic verifies whether the CPU correctly calculates the **sum of 
 2. **Setting Test Failed Condition (`*failed`)**  
    - Default value is set to **0** (`*failed = 1'b0`).  
    - If the condition in `*passed` is **not met**, it implies failure.  
+
+<br>
 
 ### **Suppressing Warnings for Unused Variables**  
 
@@ -516,8 +534,8 @@ This directive is used to **avoid warnings** in the simulation logs about unassi
      - `$is_bgeu` (Branch if Greater or Equal Unsigned)  
 
 
-Click here to get the entire code for Single cycle RISCV CPU Core.
+[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_RISCV_CPU_Core.tlv) to get the entire code for Single cycle RISCV CPU Core.
 
-Click here to view the output diagram of the Makerchip IDE of Single Cycle RISCV CPU Core.
+[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core.png) to view the output diagram of the Makerchip IDE of Single Cycle RISCV CPU Core.
 
-Click here to view the Visualization of functioning of RISCV CPU in the Visualization field provoided by Makerchip IDE.
+[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) to view the Visualization of functioning of RISCV CPU in the Visualization field provoided by Makerchip IDE.
