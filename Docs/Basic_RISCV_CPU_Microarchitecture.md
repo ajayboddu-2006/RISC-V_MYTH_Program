@@ -112,3 +112,7 @@ Access the starter code as shown in below image
 
 |  ![Starter_code](./../Images/starter_code.png)  |
 
+Now, we can start designing various components of RV32 RISCV CPU Core...
+
+### **Program Counter**
+
