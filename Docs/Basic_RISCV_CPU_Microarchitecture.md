@@ -134,6 +134,13 @@ Now, we can start designing various components of RV32 RISCV CPU Core...
 <br>
 
 ### **Program Counter**
+
+
+
+| ![RISC_CPU](./../Images/pc.png) |
+| :--------------------------------------------------: |
+|         Program Counter    |
+
  
 ```tlv
 //Program Counter
@@ -148,6 +155,11 @@ $pc[31:0] = (>>1$reset) ? '0 :>>1$pc + 32'h4;
 
 In the started code, uncomment `m4+imem(@1)` for Instruction memory Interface, and alsi uncomment `m4+cpu_viz(@4)` for Visualization.
 
+| ![RISC_CPU](./../Images/imem.png) |
+| :--------------------------------------------------: |
+|           Istruction Mmemory     |
+
+
 ```tlv
  //Instruction Memory
 $imem_rd_en = !$reset ? 1 : 0;
@@ -161,7 +173,9 @@ $imem_rd_addr[31:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
 
 ### **Instruction Decode Logic**
 
-# Image
+| ![RISC_CPU](./../Images/decode.png) |
+| :--------------------------------------------------: |
+|           Decoder     |
 
 Below is the table describing the Type of Instructions based on the opcode
 
@@ -205,7 +219,9 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 ### **Immediate Instruction Decode Logic**  
 
-# Image
+| ![RISC_CPU](./../Images/immediate_instr.png) |
+| :--------------------------------------------------: |
+|           Immediate filed in different types of Instructions     |
 
 ```tlv
  //Immediate Instruction Decode
@@ -232,6 +248,10 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 ### **Instruction Field Validity Checks**  
 
+| ![RISC_CPU](./../Images/instr_fields.png) |
+| :--------------------------------------------------: |
+|           RISC-V CPU Micro Architecture     |
+
   ```tlv
          //Valid signals for different parts of an Instruction
          $rs1_valid    = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
@@ -252,6 +272,8 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 
 ### **Instruction Component Extraction**  
+
+
 
 ```tlv
 
@@ -285,6 +307,10 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 ### **Instruction Operation Decoding**  
 
+| ![RISC_CPU](./../Images/ALU.png) |
+| :--------------------------------------------------: |
+|           RISC-V CPU Micro Architecture     |
+
 ```tlv
 
  //dec_bits decided the Instruction operation                          
@@ -304,7 +330,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 ```
 
 
-### **Instruction Operation Decoding** 
+#### **Instruction Operation Decoding** 
 
 - **`$dec_bits[10:0]`** → Combines `funct7[5]`, `funct3`, and `opcode` to decide the instruction operation.  
 
@@ -325,6 +351,10 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 ### **Register File :**
 
 Before defining the code for Register file, uncommment `m4+rf(@1, @1)` for Register File Interface.
+
+| ![RISC_CPU](./../Images/rF.png) |
+| :--------------------------------------------------: |
+|          Register File     |
 
 ```tlv
  //2-read and 1-write register file 
@@ -349,6 +379,9 @@ Before defining the code for Register file, uncommment `m4+rf(@1, @1)` for Regis
 
 ### **Arithmetic Logic Unit :**
 
+| ![RISC_CPU](./../Images/ALU_PIPE.png) |
+| :--------------------------------------------------: |
+|        Arithmetic Logic Unit   |
 
 ```tlv
 
@@ -376,6 +409,15 @@ The ALU (Arithmetic Logic Unit) is responsible for executing arithmetic operatio
   <br>
 
 ### **Register File Write Operation**  
+
+| ![RISC_CPU](./../Images/rf_wr.png) |
+| :--------------------------------------------------: |
+|          Register File Write     |
+
+
+| ![RISC_CPU](./../Images/rf_32.png) |
+| :--------------------------------------------------: |
+|          Block diagram of Register File    |
 
 ```tlv
  //Register file write
@@ -438,6 +480,11 @@ This logic determines whether a branch should be taken based on different RISC-V
 <br>
 
 ### **Branch Target Address Calculation**  
+
+| ![RISC_CPU](./../Images/branches_pc.png) |
+| :--------------------------------------------------: |
+|           Branch support     |
+
 ```tlv
 
  //Update of Branch Branch Instruction Address
@@ -461,6 +508,8 @@ This logic updates the **branch target address** when a branch instruction is ex
 <br>
 
 ### **Program Counter (PC) Update with Branch Support**  
+
+
 
 ```tlv
 
@@ -505,6 +554,13 @@ This testbench logic verifies whether the CPU correctly calculates the **sum of 
 2. **Setting Test Failed Condition (`*failed`)**  
    - Default value is set to **0** (`*failed = 1'b0`).  
    - If the condition in `*passed` is **not met**, it implies failure.  
+
+You can now view the `log` as follows which tells that our CPU is working fine..
+
+| ![RISC_CPU](./../Images/testbench_sim_passed.png) |
+| :--------------------------------------------------: |
+|           RISC-V CPU Micro Architecture     |
+
 
 <br>
 
