@@ -133,6 +133,7 @@ $pc[31:0] = (>>1$reset) ? '0 : >>1$taken_br ? >>1$br_tgt_pc : >>1$pc + 32'h4;
 ### **Instruction Memory :**
 
 In the started code, uncomment `m4+imem(@1)` for Instruction memory Interface, and alsi uncomment `m4+cpu_viz(@4)` for Visualization.
+
 ```tlv
  //Instruction Memory
 $imem_rd_en = !$reset ? 1 : 0;
@@ -143,6 +144,8 @@ $imem_rd_addr[31:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
 - imem_rd_addr → Address derived from PC, ensuring word-aligned access.
 
 ### **Instruction Decode Logic**
+
+# Image
 
 Below is the table describing the Type of Instructions based on the opcode
 
@@ -181,4 +184,124 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 | **J-type** (`is_j_instr`) | `11011` |
 
 
+### **Immediate Instruction Decode Logic**  
 
+# Image
+
+```tlv
+ //Immediate Instruction Decode
+         $imm[31:0] = $is_i_instr   ? {{21{$instr[31]}}, $instr[30:20]} :
+                      $is_s_instr   ? {{21{$instr[31]}}, $instr[30:25], $instr[11:7]} :
+                      $is_b_instr   ? {{20{$instr[31]}}, $instr[7], $instr[30:25], $instr[11:8], 1'b0} :
+                      $is_u_instr   ? {$instr[31:12], 12'b0} :
+                      $is_j_instr   ? {{12{$instr[31]}}, $instr[19:12], $instr[20], $instr[30:21], 1'b0} :
+                      32'b0;
+```
+
+
+- **`$imm[31:0]`** → Extracts and sign-extends immediate values based on instruction type.  
+- **Immediate formats:**  
+  - **I-type (`is_i_instr`)** → `{21-bit sign-extension, instr[30:20]}`  
+  - **S-type (`is_s_instr`)** → `{21-bit sign-extension, instr[30:25], instr[11:7]}`  
+  - **B-type (`is_b_instr`)** → `{20-bit sign-extension, instr[7], instr[30:25], instr[11:8], 1'b0}`  
+  - **U-type (`is_u_instr`)** → `{instr[31:12], 12'b0}`  
+  - **J-type (`is_j_instr`)** → `{12-bit sign-extension, instr[19:12], instr[20], instr[30:21], 1'b0}`  
+  - **Default (`else`)** → `32'b0` (Zero for non-immediate instructions).  
+
+
+
+
+
+
+
+
+
+
+
+### **Instruction Field Validity Checks**  
+
+  ```tlv
+         //Valid signals for different parts of an Instruction
+         $rs1_valid    = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
+         $rs2_valid    = $is_r_instr || $is_s_instr || $is_b_instr;
+         $rd_valid     = $is_r_instr || $is_i_instr || $is_u_instr || $is_j_instr;
+         $funct3_valid = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
+         $funct7_valid = $is_r_instr;
+         $opcode[6:0]    = $instr[6:0];
+```
+- **`$rs1_valid`** → `rs1` is required for **R, I, S, and B-type** instructions.  
+- **`$rs2_valid`** → `rs2` is required for **R, S, and B-type** instructions.  
+- **`$rd_valid`** → `rd` is needed for **R, I, U, and J-type** instructions.  
+- **`$funct3_valid`** → `funct3` is used in **R, I, S, and B-type** instructions.  
+- **`$funct7_valid`** → `funct7` is only relevant for **R-type** instructions.  
+- **`$opcode[6:0]`** → Extracts the **7-bit opcode** from the instruction.  
+
+
+
+### **Instruction Component Extraction**  
+
+```tlv
+
+//Validity for different components of an Instruction
+         ?$rs1_valid
+            $rs1[4:0]    = $instr[19:15];
+            
+         ?$rs2_valid
+            $rs2[4:0]    = $instr[24:20];
+            
+         ?$rd_valid
+            $rd[4:0]     = $instr[11:7];
+            
+         ?$funct3_valid
+            $funct3[2:0] = $instr[14:12];
+            
+         ?$funct7_valid
+            $funct7[6:0] = $instr[31:25];
+
+
+```
+
+- **`$rs1[4:0]`** → Extracts `rs1` from bits **[19:15]** if `$rs1_valid` is true.  
+- **`$rs2[4:0]`** → Extracts `rs2` from bits **[24:20]** if `$rs2_valid` is true.  
+- **`$rd[4:0]`** → Extracts `rd` from bits **[11:7]** if `$rd_valid` is true.  
+- **`$funct3[2:0]`** → Extracts `funct3` from bits **[14:12]** if `$funct3_valid` is true.  
+- **`$funct7[6:0]`** → Extracts `funct7` from bits **[31:25]** if `$funct7_valid` is true.  
+
+
+
+
+### **Instruction Operation Decoding**  
+
+```tlv
+
+ //dec_bits decided the Instruction operation                          
+         $dec_bits[10:0] = {$funct7[5], $funct3, $opcode};
+
+                                       
+         //Decoding some Of the RISCV Instructions                        
+         $is_beq  = $dec_bits ==? 11'bx_000_1100011;
+         $is_bne  = $dec_bits ==? 11'bx_001_1100011;
+         $is_blt  = $dec_bits ==? 11'bx_100_1100011;
+         $is_bge  = $dec_bits ==? 11'bx_101_1100011;
+         $is_bltu = $dec_bits ==? 11'bx_110_1100011;
+         $is_bgeu = $dec_bits ==? 11'bx_111_1100011;
+         $is_addi = $dec_bits ==? 11'bx_000_0010011;
+         $is_add  = $dec_bits ==? 11'b0_000_0110011;
+
+```
+
+### **Instruction Operation Decoding** 
+
+- **`$dec_bits[10:0]`** → Combines `funct7[5]`, `funct3`, and `opcode` to decide the instruction operation.  
+
+#### **Branch Instructions (Opcode: `1100011`)**  
+- **`$is_beq`** → Branch if Equal (`000_1100011`).  
+- **`$is_bne`** → Branch if Not Equal (`001_1100011`).  
+- **`$is_blt`** → Branch if Less Than (`100_1100011`).  
+- **`$is_bge`** → Branch if Greater or Equal (`101_1100011`).  
+- **`$is_bltu`** → Branch if Less Than (Unsigned) (`110_1100011`).  
+- **`$is_bgeu`** → Branch if Greater or Equal (Unsigned) (`111_1100011`).  
+
+#### **Arithmetic Instructions**  
+- **`$is_addi`** → Add Immediate (`000_0010011`).  
+- **`$is_add`** → Add (`0_000_0110011`).  
