@@ -14,28 +14,20 @@ The workshop covered:
 ### RISC-V ISA (Instruction Set Architecture)  
 - Understanding the RISC-V instruction formats including R-type, I-type, S-type, B-type, U-type, and J-type  
 - Implementing RISC-V assembly programs  
-- Executing instructions on a simulated CPU environment  
+- Executing instructions on a RISCV CPU Core written in Verilog(picorv32a) 
 
 ### Introduction to TL-Verilog  
 - Learning Transaction-Level Verilog (TL-Verilog) for efficient digital design  
 - Hands-on experience with Makerchip IDE for coding and simulation  
-- Implementing simple RISC-V operations in TL-Verilog  
+- Implementing simple circuits in TL-Verilog  
 
 ### Single-Cycle RISC-V CPU Core  
 - Designing a basic RISC-V CPU that executes one instruction per clock cycle  
-- Implementing key components:  
-  - Instruction Fetch (IF)  
-  - Instruction Decode (ID)  
-  - Execution (EX)  
-  - Memory Access (MEM)  
-  - Write Back (WB)  
 - Simulating the single-cycle processor using TL-Verilog  
 
 ### Pipelined RISC-V CPU Core  
 - Enhancing the single-cycle CPU into a pipelined architecture for higher efficiency  
-- Dividing execution into five stages (IF, ID, EX, MEM, WB)  
-- Handling data hazards, control hazards, and forwarding mechanisms  
-- Implementing branch handling, register forwarding, and load-use hazard resolution  
+- Simulating the Pipelined processor using TL-Verilog  
 
 
 
