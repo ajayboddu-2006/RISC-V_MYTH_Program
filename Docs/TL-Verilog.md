@@ -92,9 +92,3 @@ Whether you're learning TL-Verilog, exploring hardware design methodologies, or 
 |                             | Distance_Computation_with_validity      | [Distance_Computation_with_validity](./../TL-Verilog_Projects/Validity/Distance_Computation_with_validity/Distance_Computation_with_validity.tlv) | [Makerchip](https://makerchip.com/sandbox/073fmhNyx/0vgh7yK) | [Output](./../TL-Verilog_Projects/Validity/Distance_Computation_with_validity/Distance_Computation_with_validity.png) |
 
 ---
-
-
-
-# validity
-
-# Clock Gating
