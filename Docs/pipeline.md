@@ -337,10 +337,10 @@ With this, we have designed our pipelined RISCV CPU Core.
 
 | **Description** | **Link** |
 |---------------|---------|
-| **Complete Code for Single Cycle RISC-V CPU Core** | [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_RISCV_CPU_Core.tlv) |
-| **Output Diagram from Makerchip IDE** | [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core.png) |
-| **Visualization of RISC-V CPU Functioning** | [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) |
-| **Open Makerchip IDE for this CPU Core** | [Click here](https://makerchip.com/sandbox/01wfphXl8/066hr13) |
+| **Complete Code for Single Cycle RISC-V CPU Core** | [Click here](./../RISCV_CPU_Core/Pipelined_RISCV_CPU_Core/Pipelined_RISCV_CPU_Core.tlv) |
+| **Output Diagram from Makerchip IDE** | [Click here](./../RISCV_CPU_Core/Pipelined_RISCV_CPU_Core/pipelined_riscv_cpu_core.png) |
+| **Visualization of RISC-V CPU Functioning** | [Click here](./../RISCV_CPU_Core/Pipelined_RISCV_CPU_Core/pipelined_riscv_cpu_core_viz.png) |
+| **Open Makerchip IDE for this CPU Core** | [Click here](https://makerchip.com/sandbox/0J6f8hLwM/0X6hXqD) |
 
 
 
