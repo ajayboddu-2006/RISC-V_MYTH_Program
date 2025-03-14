@@ -133,7 +133,7 @@ Now, we can start designing various components of RV32 RISCV CPU Core...
 
 <br>
 
-### **Program Counter**
+## **Program Counter :**
 
 
 
@@ -141,6 +141,7 @@ Now, we can start designing various components of RV32 RISCV CPU Core...
 | :--------------------------------------------------: |
 |         Program Counter    |
 
+The Code for Program Counter is as follows
  
 ```tlv
 //Program Counter
@@ -151,7 +152,7 @@ $pc[31:0] = (>>1$reset) ? '0 :>>1$pc + 32'h4;
 
 <br>
 
-### **Instruction Memory :**
+## **Instruction Memory :**
 
 In the started code, uncomment `m4+imem(@1)` for Instruction memory Interface, and alsi uncomment `m4+cpu_viz(@4)` for Visualization.
 
@@ -159,6 +160,7 @@ In the started code, uncomment `m4+imem(@1)` for Instruction memory Interface, a
 | :--------------------------------------------------: |
 |           Istruction Mmemory     |
 
+The code for Instruction Memory Interface is as follows
 
 ```tlv
  //Instruction Memory
@@ -171,11 +173,12 @@ $imem_rd_addr[31:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
 
 <br>
 
-### **Instruction Decode Logic**
+## **Instruction Decode Logic :**
 
 | ![RISC_CPU](./../Images/decode.png) |
 | :--------------------------------------------------: |
 |           Decoder     |
+
 
 Below is the table describing the Type of Instructions based on the opcode
 
@@ -186,6 +189,7 @@ Below is the table describing the Type of Instructions based on the opcode
 | **10**                  | R4   | R4   | R4   | R4   | R    | -    | -    | -    |
 | **11**                  | B    | I    | -    | J    | *I (unused)* | - | - | - |
 
+The code for Instruction fetch is as follows
 
 ```tlv
 //Fetch Instruction Data
@@ -200,7 +204,7 @@ Below is the table describing the Type of Instructions based on the opcode
          $is_j_instr = $instr[6:2] == 5'b11011;
 ```
 
-<br>
+
 
 **Fetch Instruction:** $instr = $imem_rd_data (loads instruction from memory).
 
@@ -217,11 +221,13 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 <br>
 
-### **Immediate Instruction Decode Logic**  
+## **Immediate Instruction Decode Logic :**  
 
 | ![RISC_CPU](./../Images/immediate_instr.png) |
 | :--------------------------------------------------: |
 |           Immediate filed in different types of Instructions     |
+
+The code for Immediate Instruction Decode logic is as follows
 
 ```tlv
  //Immediate Instruction Decode
@@ -246,11 +252,13 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 <br>
 
-### **Instruction Field Validity Checks**  
+## **Instruction Field Validity Checks :**  
 
 | ![RISC_CPU](./../Images/instr_fields.png) |
 | :--------------------------------------------------: |
 |           RISC-V CPU Micro Architecture     |
+
+Code for Instruction field validity check is as follows
 
   ```tlv
          //Valid signals for different parts of an Instruction
@@ -271,9 +279,9 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 <br>
 
 
-### **Instruction Component Extraction**  
+## **Instruction Component Extraction :**  
 
-
+Code for instruction Component extraction is as follows
 
 ```tlv
 
@@ -305,11 +313,13 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 <br>
 
-### **Instruction Operation Decoding**  
+## **Instruction Operation Decoding :**  
 
 | ![RISC_CPU](./../Images/ALU.png) |
 | :--------------------------------------------------: |
 |           RISC-V CPU Micro Architecture     |
+
+Code for Instruction Operation Decoding is as follows
 
 ```tlv
 
@@ -348,13 +358,15 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 <br>
 
-### **Register File :**
+## **Register File :**
 
 Before defining the code for Register file, uncommment `m4+rf(@1, @1)` for Register File Interface.
 
 | ![RISC_CPU](./../Images/rf.png) |
 | :--------------------------------------------------: |
 |          Register File     |
+
+Code for Regiter file read is as follows
 
 ```tlv
  //2-read and 1-write register file 
@@ -377,11 +389,13 @@ Before defining the code for Register file, uncommment `m4+rf(@1, @1)` for Regis
 
 <br>
 
-### **Arithmetic Logic Unit :**
+## **Arithmetic Logic Unit :**
 
 | ![RISC_CPU](./../Images/ALU_PIPE.png) |
 | :--------------------------------------------------: |
 |        Arithmetic Logic Unit   |
+
+Code for Arithmetic Logic Unit is as follows
 
 ```tlv
 
@@ -408,7 +422,7 @@ The ALU (Arithmetic Logic Unit) is responsible for executing arithmetic operatio
 
   <br>
 
-### **Register File Write Operation**  
+## **Register File Write Operation :**  
 
 | ![RISC_CPU](./../Images/rf_wr.png) |
 | :--------------------------------------------------: |
@@ -419,6 +433,7 @@ The ALU (Arithmetic Logic Unit) is responsible for executing arithmetic operatio
 | :--------------------------------------------------: |
 |          Block diagram of Register File    |
 
+Code for Register file Write opertaion is as follows
 ```tlv
  //Register file write
          $rf_wr_en = ($rd == 5'h0) ? 1'b0 : $rd_valid;
@@ -443,7 +458,10 @@ The register file write operation ensures that computation results are stored in
 
 <br>
 
-### **Branch Instruction Evaluation**  
+## **Branch Instruction Evaluation :**  
+
+Code for Barnch Instruction Evaluation is as follows
+
 ```tlv
 
    //Checking for Branch Instruction
@@ -479,11 +497,13 @@ This logic determines whether a branch should be taken based on different RISC-V
 
 <br>
 
-### **Branch Target Address Calculation**  
+## **Branch Target Address Calculation :**  
 
 | ![RISC_CPU](./../Images/branches_pc.png) |
 | :--------------------------------------------------: |
 |           Branch support     |
+
+Code for Branch target Address Calculation is as follows
 
 ```tlv
 
@@ -507,9 +527,9 @@ This logic updates the **branch target address** when a branch instruction is ex
 
 <br>
 
-### **Program Counter (PC) Update with Branch Support**  
+## **Program Counter (PC) Update with Branch Support :**  
 
-
+Code for Porgram Counter with update of branch support is as follows
 
 ```tlv
 
@@ -534,8 +554,9 @@ This logic updates the **Program Counter (PC)** to handle both **sequential exec
 
 <br>
 
-### **Testbench for Simulation Verification**  
+## **Testbench for Simulation Verification :**  
 
+Code for Testbench to check whether the CPU is working properly or not is as follows
 ```tlv
 //Testbench(Simulation passed when Value stored in register 10 equals to Sum of numbers from 1 to 9 as per our ASM code     
          *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9);
@@ -564,7 +585,9 @@ You can now view the `log` as follows which tells that our CPU is working fine..
 
 <br>
 
-### **Suppressing Warnings for Unused Variables**  
+## **Suppressing Warnings for Unused Variables :**  
+
+Code for suppression of Unused variable warning is as follows
 
 ```tlv
 
@@ -590,10 +613,13 @@ This directive is used to **avoid warnings** in the simulation logs about unassi
      - `$is_bgeu` (Branch if Greater or Equal Unsigned)  
 
 
-[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_RISCV_CPU_Core.tlv) to get the entire code for Single cycle RISCV CPU Core.
 
-[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core.png) to view the output diagram of the Makerchip IDE of Single Cycle RISCV CPU Core.
+## **Single Cycle RISC-V CPU Core Resources :**  
 
-[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) to view the Visualization of functioning of RISCV CPU in the Visualization field provoided by Makerchip IDE.
+| **Description** | **Link** |
+|---------------|---------|
+| **Complete Code for Single Cycle RISC-V CPU Core** | [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_RISCV_CPU_Core.tlv) |
+| **Output Diagram from Makerchip IDE** | [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core.png) |
+| **Visualization of RISC-V CPU Functioning** | [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) |
+| **Open Makerchip IDE for this CPU Core** | [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) |
 
-[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) to get into the Makerchip IDE environment of this Single Cycle CPU Core.
