@@ -29,5 +29,9 @@ The workshop covered:
 - Enhancing the single-cycle CPU into a pipelined architecture for higher efficiency  
 - Simulating the Pipelined processor using TL-Verilog  
 
+## **Tools Used**
 
+- Makerchip IDE – Cloud-based platform for TL-Verilog simulation.
+- TL-Verilog – Used for designing the RISC-V processor.
+- GNU Compiler ToolChain - Used for Excecution of C programs and ASM programs
 
