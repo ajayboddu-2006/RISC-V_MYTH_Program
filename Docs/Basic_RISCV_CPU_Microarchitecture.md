@@ -117,6 +117,11 @@ Access the starter code as shown in below image
 | :--------------------------------------------------: |
 |           Starter Code      |
 
+Starter code contains :
+- A simple RISC-V assembler.
+- An instruction memory containing the sum 1..9 test program.
+- Commented code for register file and memory.
+- Visualization.
 
 Now, we can start designing various components of RV32 RISCV CPU Core...
 
@@ -124,11 +129,10 @@ Now, we can start designing various components of RV32 RISCV CPU Core...
  
 ```tlv
 //Program Counter
-$pc[31:0] = (>>1$reset) ? '0 : >>1$taken_br ? >>1$br_tgt_pc : >>1$pc + 32'h4;
+$pc[31:0] = (>>1$reset) ? '0 :>>1$pc + 32'h4;
 ```
-- If `reset` is active → Set `pc = 0`.  
-- If a branch is taken → Set `pc = br_tgt_pc`.  
-- Otherwise            → Increment `pc` by `4` (next instruction).  
+- If reset is active → Set pc = 0.
+- Otherwise → Increment pc by 4 (move to the next instruction).
 
 ### **Instruction Memory :**
 
@@ -305,3 +309,215 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 #### **Arithmetic Instructions**  
 - **`$is_addi`** → Add Immediate (`000_0010011`).  
 - **`$is_add`** → Add (`0_000_0110011`).  
+
+
+### **Register File :**
+
+Before defining the code for Register file, uncommment `m4+rf(@1, @1)` for Register File Interface.
+
+```tlv
+ //2-read and 1-write register file 
+         //Register file Read
+         $rf_rd_en1         = $rs1_valid;
+         $rf_rd_index1[4:0] = $rs1[4:0];
+         $rf_rd_en2         = $rs2_valid;
+         $rf_rd_index2[4:0] = $rs2[4:0];
+         $src1_value[31:0] = $rf_rd_data1;
+         $src2_value[31:0] = $rf_rd_data2; 
+```
+
+
+- **`rf_rd_en1`** → Enables reading from register `rs1` if valid.  
+- **`rf_rd_index1`** → Specifies the index of `rs1` for reading.  
+- **`rf_rd_en2`** → Enables reading from register `rs2` if valid.  
+- **`rf_rd_index2`** → Specifies the index of `rs2` for reading.  
+- **`src1_value`** → Stores the data read from `rs1`.  
+- **`src2_value`** → Stores the data read from `rs2`.
+
+
+### **Arithmetic Logic Unit :**
+
+
+```tlv
+
+//ALU
+         $result[31:0] = $is_addi ? $src1_value + $imm :
+                         $is_add  ? $src2_value + $src1_value : 32'bx;
+
+```
+
+
+The ALU (Arithmetic Logic Unit) is responsible for executing arithmetic operations based on the instruction type and operand values.  
+
+#### **Functioning:**  
+1. **Result Computation (`$result[31:0]`)**  
+   - If the instruction is **Add Immediate (`addi`)** → The result is computed as:  
+     ```
+     $result = $src1_value + $imm
+     ```
+   - If the instruction is **Add (`add`)** → The result is computed as:  
+     ```
+     $result = $src1_value + $src2_value
+     ```
+   - For other instructions, the result is **undefined (`32'bx`)**.
+  
+
+### **Register File Write Operation**  
+
+```tlv
+ //Register file write
+         $rf_wr_en = ($rd == 5'h0) ? 1'b0 : $rd_valid;
+         $rf_wr_index[4:0] = $rd[4:0];
+         $rf_wr_data[31:0]  = $result[31:0];
+
+```
+
+The register file write operation ensures that computation results are stored in the appropriate destination register (`rd`).  
+
+
+1. **Write Enable Signal (`$rf_wr_en`)**  
+   - If the destination register (`rd`) is **zero (`x0`)**, writing is **disabled** (`1'b0`), as register `x0` in RISC-V is **hardwired to zero**.  
+   - Otherwise, writing is enabled if the instruction is **valid for `rd`** (`$rd_valid`).  
+
+2. **Write Index (`$rf_wr_index[4:0]`)**  
+   - Specifies the destination register (`rd`) where the result will be written.  
+   - Extracts the 5-bit register address from `$rd[4:0]`.  
+
+3. **Write Data (`$rf_wr_data[31:0]`)**  
+   - The computed result (`$result[31:0]`) is written into the register file at the specified **destination register (`rd`)**.  
+
+
+
+### **Branch Instruction Evaluation**  
+```tlv
+
+   //Checking for Branch Instruction
+         $taken_br = $is_beq  ? ($src1_value == $src2_value) :
+                     $is_bne  ? ($src1_value != $src2_value) :
+                     $is_blt  ? ($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31]) :
+                     $is_bge  ? ($src1_value > $src2_value) ^ ($src1_value[31] != $src2_value[31]) :
+                     $is_bltu ? ($src1_value <= $src2_value) :
+                     $is_bgeu ? ($src1_value >= $src2_value) :
+                     1'b0;
+```
+
+
+This logic determines whether a branch should be taken based on different RISC-V branch instructions.  
+
+  
+
+1. **Branch Decision (`$taken_br`)**  
+   - Evaluates different branch conditions based on the instruction type.  
+   - The result is **1 (`true`)** if the branch condition is met, otherwise **0 (`false`)**.  
+
+2. **Branch Conditions:**  
+   - **BEQ (`$is_beq`)** → Branch if `src1_value == src2_value`.  
+   - **BNE (`$is_bne`)** → Branch if `src1_value != src2_value`.  
+   - **BLT (`$is_blt`)** → Branch if `src1_value < src2_value`, handling signed values.  
+   - **BGE (`$is_bge`)** → Branch if `src1_value >= src2_value`, handling signed values.  
+   - **BLTU (`$is_bltu`)** → Branch if `src1_value < src2_value` (unsigned).  
+   - **BGEU (`$is_bgeu`)** → Branch if `src1_value >= src2_value` (unsigned).  
+
+3. **Signed vs. Unsigned Handling:**  
+   - **Signed comparisons (`BLT`, `BGE`)** use **XOR** to handle sign-bit differences.  
+   - **Unsigned comparisons (`BLTU`, `BGEU`)** are directly checked.  
+
+
+
+### **Branch Target Address Calculation**  
+```tlv
+
+ //Update of Branch Branch Instruction Address
+         $br_tgt_pc[31:0] = $pc + $imm;
+
+```
+
+This logic updates the **branch target address** when a branch instruction is executed.  
+
+#### **Functioning:**  
+
+1. **Branch Target Address (`$br_tgt_pc`)**  
+   - Computes the **next instruction address** when a branch is taken.  
+     - **`pc`** → Current Program Counter (PC).  
+     - **`imm`** → Immediate offset value (signed).  
+
+2. **Purpose:**  
+   - If a branch instruction evaluates **true**, execution jumps to `$br_tgt_pc`.  
+   - Used in **loops, conditional jumps, and branching operations**.  
+
+### **Program Counter (PC) Update with Branch Support**  
+
+```tlv
+
+ $pc[31:0] = (>>1$reset) ? '0 : >>1$taken_br ? >>1$br_tgt_pc : >>1$pc + 32'h4;
+
+```
+
+This logic updates the **Program Counter (PC)** to handle both **sequential execution** and **branch instructions**.  
+
+#### **Functioning:**  
+
+1. **Reset Condition (`>>1$reset`)**  
+   - If **reset** is active, set **PC = 0** to start execution from the beginning.  
+   
+2. **Branch Handling (`>>1$taken_br ? >>1$br_tgt_pc`)**  
+   - If a **branch condition is met** (`taken_br = 1`), update **PC** to the **branch target address (`br_tgt_pc`)**.  
+   - Ensures correct jumps during **conditional branching** (e.g., BEQ, BNE, BLT).  
+
+3. **Normal Execution (`>>1$pc + 32'h4`)**  
+   - If no branch is taken, increment PC by **4** (next instruction).  
+   - Standard **instruction fetch** for **32-bit instructions** in RISC-V.  
+
+
+### **Testbench for Simulation Verification**  
+
+```tlv
+//Testbench(Simulation passed when Value stored in register 10 equals to Sum of numbers from 1 to 9 as per our ASM code     
+         *passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9);
+         *failed = 1'b0;
+
+````
+
+This testbench logic verifies whether the CPU correctly calculates the **sum of numbers from 1 to 9** and stores the result in **register x10**.  
+
+
+1. **Checking Test Passed Condition (`*passed`)**  
+   - Reads the value from **register x10** (`cpu/xreg[10]`).  
+   - Compares it with the expected sum **(1+2+3+4+5+6+7+8+9 = 45)**.  
+   - If the stored value **matches 45**, the test **passes** (`*passed = 1`).  
+
+2. **Setting Test Failed Condition (`*failed`)**  
+   - Default value is set to **0** (`*failed = 1'b0`).  
+   - If the condition in `*passed` is **not met**, it implies failure.  
+
+### **Suppressing Warnings for Unused Variables**  
+
+```tlv
+
+//For removal of Warnings in the log as Unassigned variables
+`BOGUS_USE($is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu)
+
+```
+
+This directive is used to **avoid warnings** in the simulation logs about unassigned or unused variables.  
+
+ 
+1. **`BOGUS_USE` Macro**  
+   - This is a common macro used in some simulation environments to **trick the compiler** into thinking a variable is being used.  
+   - Prevents **"unassigned variable"** or **"unused signal"** warnings.  
+
+2. **Avoiding Warnings for Branch Signals**  
+   - The macro ensures that the following branch instruction signals are **not reported as unused:**  
+     - `$is_beq` (Branch if Equal)  
+     - `$is_bne` (Branch if Not Equal)  
+     - `$is_blt` (Branch if Less Than)  
+     - `$is_bge` (Branch if Greater or Equal)  
+     - `$is_bltu` (Branch if Less Than Unsigned)  
+     - `$is_bgeu` (Branch if Greater or Equal Unsigned)  
+
+
+Click here to get the entire code for Single cycle RISCV CPU Core.
+
+Click here to view the output diagram of the Makerchip IDE of Single Cycle RISCV CPU Core.
+
+Click here to view the Visualization of functioning of RISCV CPU in the Visualization field provoided by Makerchip IDE.
