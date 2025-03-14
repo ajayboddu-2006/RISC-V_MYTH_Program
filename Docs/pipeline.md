@@ -1,4 +1,4 @@
-# **Pipelined RISC-V CPU Core**  
+![image](https://github.com/user-attachments/assets/a04165c9-3525-4f7b-b1c2-0b1cfd1949ce)# **Pipelined RISC-V CPU Core**  
 This project implements a **5-stage pipelined RISC-V CPU core** using **TL-Verilog** in **Makerchip IDE**.  
 It is an optimized version of the **single-cycle CPU** by introducing **instruction pipelining** for higher efficiency and better performance.  
 
@@ -92,11 +92,13 @@ For the implementation of Pipelined RISCV CPU Core, let's see what changes we ha
 
 Based on the RISC-V architecture, modify the pipeline design by changing the macro `m4+rf(@1, @1)` to `m4+rf(@2, @3)`.
 
-## **3-Cycle Valid Signal in Your Code**
+## **3-Cycle Validity**
 The `$valid` signal is used to propagate instruction validity through the pipeline.
 
-valid_3_cycle
 
+| ![RISC_CPU](./../Images/valid_3_cycle.png) |
+| :--------------------------------------------------: |
+|         3-cycle Validity   |
 
 
 ```tlv
@@ -105,20 +107,23 @@ $valid = !(>>1$valid_taken_br || >>2$valid_taken_br || >>1$valid_load || >>2$val
 
 
 Here, `$valid` is active (1) unless one of the following invalidates the instruction:
-  1. **Branch Taken (`valid_taken_br`)**  
-     - If a branch is taken in the previous (`>>1`) or two cycles before (`>>2`), the instruction is no longer valid.
-  2. **Load Hazard (`valid_load`)**  
-     - If a load instruction is still being processed in the last two cycles, the pipeline must stall.
-  3. **Jump Instruction (`valid_jump`)**  
-     - If a jump occurs in the last two cycles, the pipeline must flush incorrect instructions.
+**Branch Taken (`valid_taken_br`)**  
+- If a branch is taken in the previous (`>>1`) or two cycles before (`>>2`), the instruction is no longer valid.
+**Load Hazard (`valid_load`)**  
+- If a load instruction is still being processed in the last two cycles, the pipeline must stall.
+**Jump Instruction (`valid_jump`)**  
+- If a jump occurs in the last two cycles, the pipeline must flush incorrect instructions.
+
+
+
 Let's see the dependency factors of `$valid` as shown below
 
 | **3-Cycle Validity** | **Purpose** |
 |---------------|------------|
-| `$valid = !(>>1$valid_taken_br || >>2$valid_taken_br || >>1$valid_load || >>2$valid_load || >>1$valid_jump || >>2$valid_jump);` | Ensures instruction validity for **3 cycles**, preventing premature execution. |
-| `$valid_taken_br = $valid && $taken_br;` | Ensures **branch instructions remain valid** and prevents execution until the branch condition is resolved. |
-| `$valid_load = $valid && $is_load;` | Prevents **load-use hazards** by ensuring load instructions remain valid for **3 cycles**. |
-| `$valid_jump = $valid && $is_jump;` | Ensures **jump instructions** remain valid, preventing incorrect PC updates. |
+| `$valid = !(>>1$valid_taken_br || >>2$valid_taken_br || >>1$valid_load || >>2$valid_load || >>1$valid_jump || >>2$valid_jump);` | Ensures instruction validity for 3 cycles, preventing premature execution. |
+| `$valid_taken_br = $valid && $taken_br;` | Ensures branch instructions remain valid and prevents execution until the branch condition is resolved. |
+| `$valid_load = $valid && $is_load;` | Prevents load-use hazards by ensuring load instructions remain valid for 3 cycles. |
+| `$valid_jump = $valid && $is_jump;` | Ensures jump instructions remain valid, preventing incorrect PC updates. |
 | `$pc[31:0] = (>>1$reset) ? '0 : (>>3$taken_br) ? >>3$br_tgt_pc : (>>3$valid_load) ? >>3$inc_pc : (>>3$valid_jump && >>3$is_jal) ? >>3$br_tgt_pc : (>>3$valid_jump && >>3$is_jalr) ? >>3$jalr_tgt_pc : >>1$inc_pc;` | Updates **PC correctly after 3 cycles**, preventing incorrect instruction fetching. |
 
 ---
@@ -127,6 +132,11 @@ Let's see the dependency factors of `$valid` as shown below
 
 ## **Register File Bypass**
 Bypassing prevents stalls by forwarding the latest computed values directly to dependent instructions.
+
+
+| ![RISC_CPU](./../Imagesreg_bypass.png) |
+| :--------------------------------------------------: |
+|      Register File Bypass  |
 
 ```tlv
 $src1_value[31:0] = ((>>1$rd == $rs1) && >>1$rf_wr_en) ? >>1$result : $rf_rd_data1[31:0];
@@ -138,27 +148,12 @@ $src2_value[31:0] = ((>>1$rd == $rs2) && >>1$rf_wr_en) ? >>1$result : $rf_rd_dat
 - Otherwise, it **reads from the register file**.
 
 
-## **Branch Handling**
-Branches introduce control hazards because the pipeline may fetch the wrong instruction.
-
-### **Implementation in Your Code**
-```tlv
-$taken_br = $is_beq  ? ($src1_value == $src2_value) :
-            $is_bne  ? ($src1_value != $src2_value) :
-            $is_blt  ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])) :
-            $is_bge  ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])) :
-            $is_bltu ? ($src1_value < $src2_value) :
-            $is_bgeu ? ($src1_value >= $src2_value) : 1'b0;
-```
-
-
-- The branch condition is evaluated in `EX` (Execution) stage.
-- `$br_tgt_pc[31:0] = $pc + $imm` calculates the branch target.
-- `$valid_taken_br = $valid && $taken_br;` ensures that only **valid instructions** cause a branch.
-
-
 ## **Complete Instruction Decode**
 ### **Extracting Fields**
+
+| ![RISC_CPU](./../instr_decode_pipelined.png) |
+| :--------------------------------------------------: |
+|   Complete Instructions Decode based on opcode, funct3 & funct7 |
 
 ```tlv
 
@@ -220,6 +215,11 @@ $taken_br = $is_beq  ? ($src1_value == $src2_value) :
 
 
 ## **ALU Execution**
+
+
+| ![RISC_CPU](./../complete_alu.png) |
+| :--------------------------------------------------: |
+|   Arihtmetic Logic Unit |
 
 ```tlv
  // Arithmetic Logic Unit
@@ -284,6 +284,12 @@ Used for Memory addressing, function calls, PC control.
 
 
 ## **Load/Store Instructions**
+
+
+| ![RISC_CPU](./../load_store.png) |
+| :--------------------------------------------------: |
+|  Load/Store Instructions |
+
 Code for Load/Store Instructions is as follows
 ```tlv
 $dmem_rd_en = $valid_load;
@@ -305,6 +311,11 @@ Ensures that loads do not interfere with dependent instructions.
 ---
 
 ## **Jump Instructions**
+
+| ![RISC_CPU](./../jump.png) |
+| :--------------------------------------------------: |
+|  Jump Instructions |
+
 Code for JumpInstructions is as follows:
 ```tlv
 $is_jump = $is_jal || $is_jalr;
@@ -317,4 +328,8 @@ $valid_jump = $valid && $is_jump;
 ### **Jump Hazard Handling**
 - `$valid_jump` ensures only **valid** jumps execute.
 - The program counter (`PC`) is updated afterthe jump condition is checked.
+
+
+With this, we have designed our pipelined RISCV CPU Core.
+
 
