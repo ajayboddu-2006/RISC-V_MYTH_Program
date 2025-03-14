@@ -35,3 +35,8 @@ The workshop covered:
 - TL-Verilog – Used for designing the RISC-V processor.
 - GNU Compiler ToolChain - Used for Excecution of C programs and ASM programs
 
+## **References & Acknowledgments**
+- VSD - VLSI System Design
+- Redwood EDA - Steve Hoover
+
+Big thanks to Kunal Ghosh and Steve Hoover for their guidance throughout this workshop!
