@@ -2,7 +2,7 @@
 This project implements a **5-stage pipelined RISC-V CPU core** using **TL-Verilog** in **Makerchip IDE**.  
 It is an optimized version of the **single-cycle CPU** by introducing **instruction pipelining** for higher efficiency and better performance.  
 
----
+[Pipelined_CPU_Core](
 
 ## **Why Pipelining?**
 ### **Limitations of Single-Cycle CPU:**
