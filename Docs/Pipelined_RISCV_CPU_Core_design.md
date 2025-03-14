@@ -134,7 +134,7 @@ Let's see the dependency factors of `$valid` as shown below
 Bypassing prevents stalls by forwarding the latest computed values directly to dependent instructions.
 
 
-| ![RISC_CPU](./../Imagesreg_bypass.png) |
+| ![RISC_CPU](./../Images/reg_bypass.png) |
 | :--------------------------------------------------: |
 |      Register File Bypass  |
 
