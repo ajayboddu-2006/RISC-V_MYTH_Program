@@ -539,3 +539,5 @@ This directive is used to **avoid warnings** in the simulation logs about unassi
 [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core.png) to view the output diagram of the Makerchip IDE of Single Cycle RISCV CPU Core.
 
 [Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) to view the Visualization of functioning of RISCV CPU in the Visualization field provoided by Makerchip IDE.
+
+[Click here](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_riscv_cpu_core_viz.png) to get into the Makerchip IDE environment of this Single Cycle CPU Core.
