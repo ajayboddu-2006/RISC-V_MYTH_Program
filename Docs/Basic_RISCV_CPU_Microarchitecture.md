@@ -115,4 +115,53 @@ Access the starter code as shown in below image
 Now, we can start designing various components of RV32 RISCV CPU Core...
 
 ### **Program Counter**
+ 
+```tlv
+//Program Counter
+$pc[31:0] = (>>1$reset) ? '0 : >>1$taken_br ? >>1$br_tgt_pc : >>1$pc + 32'h4;
+```
+- If `reset` is active → Set `pc = 0`.  
+- If a branch is taken → Set `pc = br_tgt_pc`.  
+- Otherwise            → Increment `pc` by `4` (next instruction).  
+
+### **Instruction Memory :
+
+In the started code, uncomment `m4+imem(@1)` for Instruction memory Interface, and alsi uncomment `m4+cpu_viz(@4)` for Visualization.
+```tlv
+ //Instruction Memory
+$imem_rd_en = !$reset ? 1 : 0;
+$imem_rd_addr[31:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
+```
+
+- imem_rd_en → Enabled (1) when reset = 0, disabled (0) on reset.
+- imem_rd_addr → Address derived from PC, ensuring word-aligned access.
+
+### **Instruction Decode Logic**
+
+```tlv
+//Fetch Instruction Data
+         $instr[31:0] = $imem_rd_data[31:0];
+
+         //Instruction Type Decode
+         $is_i_instr = $instr[6:2] ==? 5'b0000x || $instr[6:2] ==? 5'b001x0 || $instr[6:2] ==? 5'b11001;
+         $is_r_instr = $instr[6:2] ==? 5'b01011 || $instr[6:2] ==? 5'b011x0 || $instr[6:2] ==? 5'b10100;
+         $is_s_instr = $instr[6:2] == 5'b0100x;
+         $is_u_instr = $instr[6:2] == 5'b0x101;
+         $is_b_instr = $instr[6:2] == 5'b11000;
+         $is_j_instr = $instr[6:2] == 5'b11011;
+```
+
+**Fetch Instruction:** $instr = $imem_rd_data (loads instruction from memory).
+
+Identify Instruction Types Based on `Opcode (instr[6:2])`:
+
+| **Instruction Type** | **Opcode (`instr[6:2]`)** |
+|----------------------|-------------------------|
+| **I-type** (`is_i_instr`) | `0000x`, `001x0`, `11001` |
+| **R-type** (`is_r_instr`) | `01011`, `011x0`, `10100` |
+| **S-type** (`is_s_instr`) | `0100x` |
+| **U-type** (`is_u_instr`) | `0x101` |
+| **B-type** (`is_b_instr`) | `11000` |
+| **J-type** (`is_j_instr`) | `11011` |
+
 
