@@ -110,7 +110,10 @@ To accesss the strater  code(RISCV Shell), get into the below Github repository 
 
 Access the starter code as shown in below image
 
-|  ![Starter_code](./../Images/starter_code.png)  |
+| ![Types_of_ISA](./../Images/starter_code.png) |
+| :--------------------------------------------------: |
+|           Starter Code      |
+
 
 Now, we can start designing various components of RV32 RISCV CPU Core...
 
@@ -124,7 +127,7 @@ $pc[31:0] = (>>1$reset) ? '0 : >>1$taken_br ? >>1$br_tgt_pc : >>1$pc + 32'h4;
 - If a branch is taken → Set `pc = br_tgt_pc`.  
 - Otherwise            → Increment `pc` by `4` (next instruction).  
 
-### **Instruction Memory :
+### **Instruction Memory :**
 
 In the started code, uncomment `m4+imem(@1)` for Instruction memory Interface, and alsi uncomment `m4+cpu_viz(@4)` for Visualization.
 ```tlv
@@ -163,5 +166,6 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 | **U-type** (`is_u_instr`) | `0x101` |
 | **B-type** (`is_b_instr`) | `11000` |
 | **J-type** (`is_j_instr`) | `11011` |
+
 
 
