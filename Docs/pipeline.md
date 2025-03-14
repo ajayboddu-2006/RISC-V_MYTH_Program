@@ -83,4 +83,6 @@ Each instruction moves through the pipeline like this:
 | **Structural Hazard** | Two instructions compete for the same hardware resource (e.g., memory or ALU) | Cannot execute both in the same cycle | Separate Memory (Harvard Architecture), Caching |
 
 
+## **Pipelined CPU Implementation**
 
+For the implementation of Pipelined RISCV CPU Core, let's see what changes we have to make to [Single Cycle RISCV Core](
