@@ -352,7 +352,7 @@ Identify Instruction Types Based on `Opcode (instr[6:2])`:
 
 Before defining the code for Register file, uncommment `m4+rf(@1, @1)` for Register File Interface.
 
-| ![RISC_CPU](./../Images/rF.png) |
+| ![RISC_CPU](./../Images/rf.png) |
 | :--------------------------------------------------: |
 |          Register File     |
 
