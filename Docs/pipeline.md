@@ -18,6 +18,28 @@ It is an optimized version of the **single-cycle CPU** by introducing **instruct
 
 ---
 
+# **🚀 Single-Cycle vs. Pipelined RISC-V CPU Core :**
+  
+
+---
+
+## **🔍 Key Differences: Single-Cycle vs. Pipelined CPU**
+| **Aspect**          | **Single-Cycle CPU** | **Pipelined CPU** |
+|---------------------|---------------------|-------------------|
+| **Execution Model** | Completes **one instruction per cycle** | **Overlaps execution** of multiple instructions |
+| **Clock Cycle Per Instruction (CPI)** | CPI **≥ 1** (depends on instruction complexity) | Ideal CPI **≈ 1** (one instruction finishes per cycle) |
+| **Instruction Latency** | **One cycle** for each stage | **Five cycles per instruction**, but pipeline allows overlap |
+| **Performance** | **Slow** (must complete entire instruction in one cycle) | **Fast** (multiple instructions processed at once) |
+| **Hardware Utilization** | **Inefficient** (ALU and memory sit idle for most of the time) | **Efficient** (Each pipeline stage works every cycle) |
+| **Hazard Handling** | Not required | Requires **Data Forwarding, Stalls, Branch Prediction** |
+
+---
+
+
+
+
+
+
 ## **Pipeline Stages & Execution**
 A **5-stage pipeline** is used in this RISC-V CPU implementation:  
 
@@ -51,3 +73,18 @@ Each instruction moves through the pipeline like this:
 | 4         | SW     | LW     | SUB    | ADD    |        |
 | 5         | BEQ    | SW     | LW     | SUB    | ADD    |
 | 6         | ...    | BEQ    | SW     | LW     | SUB    |
+
+
+## **Pipeline Hazards in Pipelined RISC-V CPU**
+
+| **Hazard Type**        | **Cause** | **Effect** | **Solution** |
+|------------------------|----------|------------|--------------|
+| **Data Hazard**        | One instruction depends on the result of a previous instruction | Incorrect execution order | Forwarding (Bypassing), Pipeline Stall |
+| **Read-After-Write (RAW)** | Instruction reads a register before the previous instruction writes to it | Uses incorrect/old data | Forwarding, Stall if needed |
+| **Write-After-Read (WAR)** | Instruction writes to a register before the previous instruction reads it | Incorrect register value | Register Renaming (Used in OoO CPUs) |
+| **Write-After-Write (WAW)** | Two instructions write to the same register in the wrong order | Incorrect register update | Register Renaming, Instruction Reordering |
+| **Control Hazard (Branch Hazard)** | Branch or jump instruction changes the flow | Pipeline executes the wrong instruction | Branch Prediction, Stall, Flush |
+| **Structural Hazard** | Two instructions compete for the same hardware resource (e.g., memory or ALU) | Cannot execute both in the same cycle | Separate Memory (Harvard Architecture), Caching |
+
+
+
