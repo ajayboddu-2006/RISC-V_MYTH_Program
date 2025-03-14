@@ -80,29 +80,37 @@
 
 
         //Valid signals for different parts of an Instruction
-         
          $rs1_valid = $is_r_instr || $is_s_instr || $is_b_instr || $is_i_instr;
          $rs2_valid = $is_r_instr || $is_s_instr || $is_b_instr;
          $rd_valid = $is_r_instr || $is_i_instr || $is_u_instr || $is_j_instr;
          $funct3_valid = $is_r_instr || $is_s_instr || $is_b_instr || $is_i_instr;
          $funct7_valid = $is_r_instr;
-         
-         ?$rs2_valid
-            $rs2[4:0] = $instr[24:20];
+
+
+         //Validity for different components of an Instruction
          ?$rs1_valid
             $rs1[4:0] = $instr[19:15];
+
+         ?$rs2_valid
+            $rs2[4:0] = $instr[24:20];
+
          ?$rd_valid
             $rd[4:0] = $instr[11:7];
+
          ?$funct3_valid
             $funct3[2:0] = $instr[14:12];
+
          ?$funct7_valid
             $funct7[6:0] = $instr[31:25];
             
          $opcode[6:0] = $instr[6:0];
-         
+
+
+         //dec_bits decided the Instruction operation  
          $dec_bits[10:0] = {$funct7[5],$funct3,$opcode};
-         
-         // Branch Instruction
+
+
+         //Decoding some of the RISCV Instructions     
          $is_beq = $dec_bits ==? 11'bx_000_1100011;
          $is_bne = $dec_bits ==? 11'bx_001_1100011;
          $is_blt = $dec_bits ==? 11'bx_100_1100011;
@@ -130,7 +138,7 @@
          $is_sltu = $dec_bits ==? 11'b0_011_0110011;
          $is_srl = $dec_bits ==? 11'b0_101_0110011;
          $is_sra = $dec_bits ==? 11'b1_101_0110011;
-         
+
          // Load Instruction
          $is_load = $dec_bits ==? 11'bx_xxx_0000011;
          
@@ -148,7 +156,8 @@
          $is_jump = $is_jal || $is_jalr;
          
       @2   
-      // Register File Read
+         //2-read and 1-write register file 
+         // Register File Read
          $rf_rd_en1 = $rs1_valid;
          ?$rf_rd_en1
             $rf_rd_index1[4:0] = $rs1[4:0];
@@ -156,23 +165,24 @@
          $rf_rd_en2 = $rs2_valid;
          ?$rf_rd_en2
             $rf_rd_index2[4:0] = $rs2[4:0];
-            
-      // Branch Target PC       
+
+
+         //Update of Branch Branch Instruction Address      
          $br_tgt_pc[31:0] = $pc + $imm;
       
-      // Jump Target PC
+         // Jump Target PC
          $jalr_tgt_pc[31:0] = $src1_value + $imm;
-         
-      // Input signals to ALU
+
+
+         // Input signals to ALU
          $src1_value[31:0] = ((>>1$rd == $rs1) && >>1$rf_wr_en) ? >>1$result : $rf_rd_data1[31:0];
          $src2_value[31:0] = ((>>1$rd == $rs2) && >>1$rf_wr_en) ? >>1$result : $rf_rd_data2[31:0];
          
       @3   
          
-      // ALU
+         // Arithmetic Logic Unit
          $sltu_result = $src1_value < $src2_value ;
          $sltiu_result = $src1_value < $imm ;
-         
          $result[31:0] = $is_addi ? $src1_value + $imm :
                          $is_add ? $src1_value + $src2_value : 
                          $is_or ? $src1_value | $src2_value : 
@@ -197,54 +207,66 @@
                          $is_jal ? $pc + 4 :
                          $is_jalr ? $pc + 4 : 
                          ($is_load || $is_s_instr) ? $src1_value + $imm : 32'bx;
-                         
-      // Register File Write
+
+
+         // Register File Write
          $rf_wr_en = ($rd_valid && $valid && $rd != 5'b0) || >>2$valid_load;
          ?$rf_wr_en
             $rf_wr_index[4:0] = !$valid ? >>2$rd[4:0] : $rd[4:0];
       
          $rf_wr_data[31:0] = !$valid ? >>2$ld_data[31:0] : $result[31:0];
-      
-      // Branch
+
+
+
+         //Checking for Branch Instruction
          $taken_br = $is_beq ? ($src1_value == $src2_value) :
                      $is_bne ? ($src1_value != $src2_value) :
                      $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])) :
                      $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])) :
                      $is_bltu ? ($src1_value < $src2_value) :
                      $is_bgeu ? ($src1_value >= $src2_value) : 1'b0;
-                     
+
+
+         //Valid signal for Branch Instruction
          $valid_taken_br = $valid && $taken_br;
-         
-      // Load
+
+
+         //Valid signal for load
          $valid_load = $valid && $is_load;
          $valid = !(>>1$valid_taken_br || >>2$valid_taken_br || >>1$valid_load || >>2$valid_load || >>1$valid_jump || >>2$valid_jump);
       
-      // Jump
+         //Vaid signal for Jump Instruction
          $valid_jump = $valid && $is_jump;
                   
       @4
+         //Laoding and storing into the memory
          $dmem_rd_en = $valid_load;
          $dmem_wr_en = $valid && $is_s_instr;
          $dmem_addr[3:0] = $result[5:2];
          $dmem_wr_data[31:0] = $src2_value[31:0];
          
-      @5   
+      @5  
+         //Loading data
          $ld_data[31:0] = $dmem_rd_data[31:0];
-         
-      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
-      //       be sure to avoid having unassigned signals (which you might be using for random inputs)
-      //       other than those specifically expected in the labs. You'll get strange errors for these.
 
+
+         //For removal of Warnings in the log as Unassigned variables
          `BOGUS_USE($is_beq $is_bne $is_blt $is_bge $is_bltu $is_bgeu)
-   // Assert these to end simulation (before Makerchip cycle limit).
+
+
+   //Testbench(Simulation passed when Value stored in register 10 equals to Sum of numbers from 1 to 9 as per our ASM code
    *passed = |cpu/xreg[17]>>5$value == (1+2+3+4+5+6+7+8+9);
    *failed = 1'b0;
-   
+
+
+
    // Macro instantiations for:
    //  o instruction memory
    //  o register file
    //  o data memory
    //  o CPU visualization
+
+
    |cpu
       m4+imem(@1)    // Args: (read stage)
       m4+rf(@2, @3)  // Args: (read stage, write stage) - if equal, no register bypass is required
