@@ -106,6 +106,6 @@ This assembly program initializes registers, runs a loop **10 times** to sum num
 Starter Code :
 To accesss the strater  code(RISCV Shell), get into the below Github repository and get the starter code in Makerchip IDE.
 
-![Starter_code](./../Images/starter_code.png)
+|  ![Starter_code](./../Images/starter_code.png)  |
 
 
