@@ -580,7 +580,7 @@ You can now view the `log` as follows which tells that our CPU is working fine..
 
 | ![RISC_CPU](./../Images/testbench_sim_passed.png) |
 | :--------------------------------------------------: |
-|           RISC-V CPU Micro Architecture     |
+|           Log Result for Single Cycle RISCV CPU    |
 
 
 <br>
