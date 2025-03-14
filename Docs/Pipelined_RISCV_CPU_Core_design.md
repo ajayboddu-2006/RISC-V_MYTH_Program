@@ -7,6 +7,8 @@ It is an optimized version of the **single-cycle CPU** by introducing **instruct
 | :--------------------------------------------------: |
 |         Architecture of Pipelined RISCV CPU Core   |
 
+<br>
+
 ## **Why Pipelining?**
 ### **Limitations of Single-Cycle CPU:**
 - **Every instruction completes in one cycle** → Requires a long cycle time.  
@@ -19,7 +21,9 @@ It is an optimized version of the **single-cycle CPU** by introducing **instruct
 - **Higher efficiency** → Utilizes CPU resources optimally.  
 - **One instruction completes every cycle** (after filling the pipeline).  
 
----
+
+
+<br>
 
 ## **🚀 Single-Cycle vs. Pipelined RISC-V CPU Core :**
   
@@ -50,7 +54,7 @@ A **5-stage pipeline** is used in this RISC-V CPU implementation:
 | **MEM (Memory Access)** | Reads/Writes from data memory | `$dmem_rd_en`, `$dmem_wr_en`, `$dmem_addr`, `$dmem_wr_data` |
 | **WB (Write Back)** | Stores ALU or memory result in the register file | `$rf_wr_en`, `$rf_wr_index`, `$rf_wr_data` |
 
----
+<br>
 
 ## **How Instructions Flow in a Pipeline**  
 Let’s assume we execute these **5 instructions**:  
@@ -73,6 +77,7 @@ Each instruction moves through the pipeline like this:
 | 5         | BEQ    | SW     | LW     | SUB    | ADD    |
 | 6         | ...    | BEQ    | SW     | LW     | SUB    |
 
+<br>
 
 ## **Pipeline Hazards in Pipelined RISC-V CPU**
 
@@ -85,15 +90,18 @@ Each instruction moves through the pipeline like this:
 | **Control Hazard (Branch Hazard)** | Branch or jump instruction changes the flow | Pipeline executes the wrong instruction | Branch Prediction, Stall, Flush |
 | **Structural Hazard** | Two instructions compete for the same hardware resource (e.g., memory or ALU) | Cannot execute both in the same cycle | Separate Memory (Harvard Architecture), Caching |
 
+<br>
 
 ## **Pipelined CPU Implementation**
 
 For the implementation of Pipelined RISCV CPU Core, let's see what changes we have to make to [Single Cycle RISCV Core](./../RISCV_CPU_Core/Single_Cycle_RISCV_CPU/Single_cycle_RISCV_CPU_Core.tlv).
 
 Based on the RISC-V architecture, modify the pipeline design by changing the macro `m4+rf(@1, @1)` to `m4+rf(@2, @3)`.
+<br>
 
 ## **3-Cycle Validity**
 The `$valid` signal is used to propagate instruction validity through the pipeline.
+
 
 
 | ![RISC_CPU](./../Images/valid_3_cycle.png) |
@@ -128,7 +136,7 @@ Let's see the dependency factors of `$valid` as shown below
 
 ---
 
-
+<br>
 
 ## **Register File Bypass**
 Bypassing prevents stalls by forwarding the latest computed values directly to dependent instructions.
@@ -147,6 +155,7 @@ $src2_value[31:0] = ((>>1$rd == $rs2) && >>1$rf_wr_en) ? >>1$result : $rf_rd_dat
 - If a match is found **and** the previous instruction writes to a register (`$rf_wr_en`), it uses the forwarded value (`>>1$result`).
 - Otherwise, it **reads from the register file**.
 
+<br>
 
 ## **Complete Instruction Decode**
 ### **Extracting Fields**
@@ -213,6 +222,7 @@ $src2_value[31:0] = ((>>1$rd == $rs2) && >>1$rf_wr_en) ? >>1$result : $rf_rd_dat
 | **Store Instructions** | Write data from a register into memory. Used to save results or transfer data between registers and memory. |
 | **Jump Instructions** | Unconditional branch instructions that modify the program counter (PC) directly, either with an immediate address or a register-based address. Used for function calls and loops. |
 
+<br>
 
 ## **ALU Execution**
 
@@ -281,7 +291,7 @@ Used for Multiplication, division, data alignment.
 - **JAL/JALR:** Computes jump addresses.  
 Used for Memory addressing, function calls, PC control.  
 
-
+<br>
 
 ## **Load/Store Instructions**
 
@@ -308,7 +318,7 @@ $valid_load = $valid && $is_load;
 ```
 Ensures that loads do not interfere with dependent instructions.
 
----
+<br>
 
 ## **Jump Instructions**
 
@@ -332,6 +342,7 @@ $valid_jump = $valid && $is_jump;
 
 With this, we have designed our pipelined RISCV CPU Core.
 
+<br>
 
 ## **Pipelined RISC-V CPU Core Resources :**  
 
