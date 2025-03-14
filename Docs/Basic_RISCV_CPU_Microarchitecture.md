@@ -112,7 +112,7 @@ This **M4 assembly code** calculates the sum of numbers from **0 to 9** using a 
 This assembly program initializes registers, runs a loop **10 times** to sum numbers **0 to 9**, stores the final sum in `r10`.
 
 
-## ** Starter Code :**
+## **Starter Code :**
 To accesss the strater  code(RISCV Shell), get into the below Github repository and get the starter code in Makerchip IDE.
 
 `https://github.com/stevehoover/RISC-V_MYTH_Workshop`
