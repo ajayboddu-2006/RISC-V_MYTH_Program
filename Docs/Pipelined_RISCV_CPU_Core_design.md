@@ -151,7 +151,7 @@ $src2_value[31:0] = ((>>1$rd == $rs2) && >>1$rf_wr_en) ? >>1$result : $rf_rd_dat
 ## **Complete Instruction Decode**
 ### **Extracting Fields**
 
-| ![RISC_CPU](./../instr_decode_pipelined.png) |
+| ![RISC_CPU](./../Images/instr_decode_pipelined.png) |
 | :--------------------------------------------------: |
 |   Complete Instructions Decode based on opcode, funct3 & funct7 |
 
