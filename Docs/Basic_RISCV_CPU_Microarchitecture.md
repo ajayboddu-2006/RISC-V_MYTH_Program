@@ -11,8 +11,11 @@ This design serves as a foundation for more advanced architectures like pipeline
 The microarchitecture of a RISC-V CPU defines the internal structure and data flow required to execute instructions efficiently. It consists of several key components that work together to fetch, decode, execute, and store results. The microarchitecture follows the principles of the RISC-V ISA.
 
 
-### **Key Components of RISC-V CPU Microarchitecture**  
+| ![RISC_CPU](./../Images/riscv_cpu_architecture.png) |
+| :--------------------------------------------------: |
+|           RISC-V CPU Micro Architecture     |
 
+### **Key Components of RISC-V CPU Microarchitecture**  
 
 #### **Program Counter (PC) & Branch Unit**  
    - Maintains the address of the **current instruction**.  
@@ -140,6 +143,16 @@ $imem_rd_addr[31:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
 - imem_rd_addr → Address derived from PC, ensuring word-aligned access.
 
 ### **Instruction Decode Logic**
+
+Below is the table describing the Type of Instructions based on the opcode
+
+| instr[6:5] \ instr[4:2] | 000  | 001  | 010  | 011  | 100  | 101  | 110  | 111  |
+|--------------------------|------|------|------|------|------|------|------|------|
+| **00**                  | I    | I    | -    | -    | I    | U    | I    | -    |
+| **01**                  | S    | S    | -    | R    | R    | U    | R    | -    |
+| **10**                  | R4   | R4   | R4   | R4   | R    | -    | -    | -    |
+| **11**                  | B    | I    | -    | J    | *I (unused)* | - | - | - |
+
 
 ```tlv
 //Fetch Instruction Data
