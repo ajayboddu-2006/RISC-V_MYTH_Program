@@ -2,7 +2,10 @@
 This project implements a **5-stage pipelined RISC-V CPU core** using **TL-Verilog** in **Makerchip IDE**.  
 It is an optimized version of the **single-cycle CPU** by introducing **instruction pipelining** for higher efficiency and better performance.  
 
-[Pipelined_CPU_Core](
+
+| ![RISC_CPU](./../Images/pipelined_riscv_cpu_architecture.png) |
+| :--------------------------------------------------: |
+|         Architecture of Pipelined RISCV CPU Core   |
 
 ## **Why Pipelining?**
 ### **Limitations of Single-Cycle CPU:**
@@ -90,7 +93,11 @@ For the implementation of Pipelined RISCV CPU Core, let's see what changes we ha
 Based on the RISC-V architecture, modify the pipeline design by changing the macro `m4+rf(@1, @1)` to `m4+rf(@2, @3)`.
 
 ## **3-Cycle Valid Signal in Your Code**
-The `$valid` signal is used to propagate instruction validity through the pipeline. Instead of being assigned at `@1`, your code calculates `$valid` in `@3` using the following logic:
+The `$valid` signal is used to propagate instruction validity through the pipeline.
+
+valid_3_cycle
+
+
 
 ```tlv
 $valid = !(>>1$valid_taken_br || >>2$valid_taken_br || >>1$valid_load || >>2$valid_load || >>1$valid_jump || >>2$valid_jump);
@@ -104,6 +111,17 @@ Here, `$valid` is active (1) unless one of the following invalidates the instruc
      - If a load instruction is still being processed in the last two cycles, the pipeline must stall.
   3. **Jump Instruction (`valid_jump`)**  
      - If a jump occurs in the last two cycles, the pipeline must flush incorrect instructions.
+Let's see the dependency factors of `$valid` as shown below
+
+| **3-Cycle Validity** | **Purpose** |
+|---------------|------------|
+| `$valid = !(>>1$valid_taken_br || >>2$valid_taken_br || >>1$valid_load || >>2$valid_load || >>1$valid_jump || >>2$valid_jump);` | Ensures instruction validity for **3 cycles**, preventing premature execution. |
+| `$valid_taken_br = $valid && $taken_br;` | Ensures **branch instructions remain valid** and prevents execution until the branch condition is resolved. |
+| `$valid_load = $valid && $is_load;` | Prevents **load-use hazards** by ensuring load instructions remain valid for **3 cycles**. |
+| `$valid_jump = $valid && $is_jump;` | Ensures **jump instructions** remain valid, preventing incorrect PC updates. |
+| `$pc[31:0] = (>>1$reset) ? '0 : (>>3$taken_br) ? >>3$br_tgt_pc : (>>3$valid_load) ? >>3$inc_pc : (>>3$valid_jump && >>3$is_jal) ? >>3$br_tgt_pc : (>>3$valid_jump && >>3$is_jalr) ? >>3$jalr_tgt_pc : >>1$inc_pc;` | Updates **PC correctly after 3 cycles**, preventing incorrect instruction fetching. |
+
+---
 
 
 
