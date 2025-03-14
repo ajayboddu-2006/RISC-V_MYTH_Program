@@ -217,7 +217,7 @@ $src2_value[31:0] = ((>>1$rd == $rs2) && >>1$rf_wr_en) ? >>1$result : $rf_rd_dat
 ## **ALU Execution**
 
 
-| ![RISC_CPU](./../complete_alu.png) |
+| ![RISC_CPU](./../Images/complete_alu.png) |
 | :--------------------------------------------------: |
 |   Arihtmetic Logic Unit |
 
@@ -286,7 +286,7 @@ Used for Memory addressing, function calls, PC control.
 ## **Load/Store Instructions**
 
 
-| ![RISC_CPU](./../load_store.png) |
+| ![RISC_CPU](./../Images/load_store.png) |
 | :--------------------------------------------------: |
 |  Load/Store Instructions |
 
@@ -312,7 +312,7 @@ Ensures that loads do not interfere with dependent instructions.
 
 ## **Jump Instructions**
 
-| ![RISC_CPU](./../jump.png) |
+| ![RISC_CPU](./../Images/jump.png) |
 | :--------------------------------------------------: |
 |  Jump Instructions |
 
