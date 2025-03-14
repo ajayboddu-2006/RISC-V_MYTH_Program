@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a04165c9-3525-4f7b-b1c2-0b1cfd1949ce)# **Pipelined RISC-V CPU Core**  
+# **Pipelined RISC-V CPU Core**  
 This project implements a **5-stage pipelined RISC-V CPU core** using **TL-Verilog** in **Makerchip IDE**.  
 It is an optimized version of the **single-cycle CPU** by introducing **instruction pipelining** for higher efficiency and better performance.  
 
