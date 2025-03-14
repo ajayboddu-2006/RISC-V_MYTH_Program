@@ -18,12 +18,10 @@ It is an optimized version of the **single-cycle CPU** by introducing **instruct
 
 ---
 
-# **🚀 Single-Cycle vs. Pipelined RISC-V CPU Core :**
+## **🚀 Single-Cycle vs. Pipelined RISC-V CPU Core :**
   
 
 ---
-
-## **🔍 Key Differences: Single-Cycle vs. Pipelined CPU**
 | **Aspect**          | **Single-Cycle CPU** | **Pipelined CPU** |
 |---------------------|---------------------|-------------------|
 | **Execution Model** | Completes **one instruction per cycle** | **Overlaps execution** of multiple instructions |
