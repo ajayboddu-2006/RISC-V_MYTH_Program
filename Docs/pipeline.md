@@ -21,7 +21,6 @@ It is an optimized version of the **single-cycle CPU** by introducing **instruct
 ## **🚀 Single-Cycle vs. Pipelined RISC-V CPU Core :**
   
 
----
 | **Aspect**          | **Single-Cycle CPU** | **Pipelined CPU** |
 |---------------------|---------------------|-------------------|
 | **Execution Model** | Completes **one instruction per cycle** | **Overlaps execution** of multiple instructions |
@@ -31,8 +30,7 @@ It is an optimized version of the **single-cycle CPU** by introducing **instruct
 | **Hardware Utilization** | **Inefficient** (ALU and memory sit idle for most of the time) | **Efficient** (Each pipeline stage works every cycle) |
 | **Hazard Handling** | Not required | Requires **Data Forwarding, Stalls, Branch Prediction** |
 
----
-
+<br>
 
 
 
